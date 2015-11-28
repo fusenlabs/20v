@@ -1,0 +1,40 @@
+{
+  "name": "20v",
+  "version": "0.1.0",
+  "description": "An app to enjoy a music channel with your favorites videos",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hAPPckathon/20v"
+  },
+  "devDependencies": {
+    "babel-core": "^5.4.5",
+    "babel-eslint": "^3.1.6",
+    "babel-loader": "^5.0.0",
+    "eslint": "^0.21.2",
+    "eslint-plugin-react": "^2.3.0",
+    "react-hot-loader": "^1.1.5",
+    "webpack": "^1.8.4",
+    "webpack-dev-server": "^1.8.0"
+  },
+  "dependencies": {
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "babel-runtime": "^5.1.10",
+    "redux": "^3.0.4",
+    "react-redux": "^4.0.0",
+    "youtube-client-wrapper": "git://github.com/Cosmitar/youtube-client-wrapper"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": "./node_modules/.bin/webpack --config webpack.config.production.js",
+    "lint": "./node_modules/.bin/eslint ."
+  },
+  "author": "@Cosmitar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hAPPckathon/20v/issues"
+  },
+  "homepage": "https://hAPPckathon.github.io/20v"
+}

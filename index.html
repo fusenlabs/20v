@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Youtube Playlist Player</title>
+    <!--link rel="stylesheet" type="text/css" href="style/main.css" /-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            overflow: hidden;
+            background-color: black;
+            color: white;
+        }
+
+        .AppLoading {
+            width: 100%;
+            text-align: center;
+        }
+
+        .playerContainer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .CGBand {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            height: 60px;
+            margin-bottom: 50px;
+            background-color: blue;
+            color: black;
+            font-family: arial;
+            font-size: 70%;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: left;
+            vertical-align: middle;
+            z-index: 10;
+
+            padding: 0;
+            width: 0;
+            transition: all 0.5s linear;
+            transition-delay: 0.5s;
+        }
+
+        .CGBand h1 {
+            opacity: 0;
+            transition: all 0.4s linear;
+        }
+
+        .CGBand.in {
+            padding: 20px;
+            width: 80%;
+            transition-delay: 0s;
+        }
+
+        .CGBand.in h1 {
+            transition-delay: 0.5s;
+            opacity: 1;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="appContainer"></div>
+    
+    <script>
+        window.OnGoogleAPILoadCallback = function () {
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.src = "./static/bundle.js";
+            document.body.appendChild(s);
+        }
+    </script>
+    <script src="https://apis.google.com/js/client.js?onload=OnGoogleAPILoadCallback"></script>
+</body>
+</html>
