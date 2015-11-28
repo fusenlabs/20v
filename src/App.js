@@ -13,7 +13,20 @@ class App extends Component {
     }
 
     render() {
-        return ( <div>Hello Redux World. Stage: {this.props.stage}</div> );
+        return ( <div>Hello Redux World. Stage: {this.props.stage}<br/>
+            <button onClick={this._changeStage.bind(this)}>change stage to GALLERY</button><br/>
+            <button onClick={this._changeDeferedStage.bind(this)}>change async stage to ASYNC</button>
+        </div> );
+    }
+
+    _changeStage( evt ) {
+        evt.preventDefault();
+        this.props.setStage('GALLERY');
+    }
+
+    _changeDeferedStage( evt ) {
+        evt.preventDefault();
+        this.props.setDeferedStage('ASYNC');
     }
 }
 
@@ -27,6 +40,7 @@ function mapStateToProps(state) {
 export default connect(
     mapStateToProps,
     {
-        setStage: AppActions.setApplicationStage
+        setStage: AppActions.setApplicationStage,
+        setDeferedStage: AppActions.setAsyncApplicationStage
     }
 )(App);

@@ -6,3 +6,12 @@ export function setApplicationStage(stage){
         payload: { stage: stage }
     }
 }
+
+export function setAsyncApplicationStage(stage) {
+    return (dispatch, getState) => {
+        console.log(getState());
+        setTimeout(()=>{
+            dispatch(setApplicationStage(stage));
+        },2000);
+    }
+}
