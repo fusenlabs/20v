@@ -1,46 +1,37 @@
-'use strict'
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import * as AppActions from './actions/applicationActions';
+import {connect} from 'react-redux';
+import * as searchActions from './actions/search';
 
 class App extends Component {
+    
     constructor(props) {
         super(props);
     }
-
-    componentDidMount(){
-        console.log(this.props);
-    }
-
+    
     render() {
-        return ( <div>Hello Redux World. Stage: {this.props.stage}<br/>
-            <button onClick={this._changeStage.bind(this)}>change stage to GALLERY</button><br/>
-            <button onClick={this._changeDeferedStage.bind(this)}>change async stage to ASYNC</button>
-        </div> );
+        return <div>
+            <input type="text" onKeyPress={this._handleKeyPress.bind(this)}/>
+            <span>{this.props.text}</span>
+        </div>;
     }
 
-    _changeStage( evt ) {
-        evt.preventDefault();
-        this.props.setStage('GALLERY');
-    }
-
-    _changeDeferedStage( evt ) {
-        evt.preventDefault();
-        this.props.setDeferedStage('ASYNC');
+    _handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            this.props.setSearch('new search')
+        }
     }
 }
 
 function mapStateToProps(state) {
-    const { application } = state;
+    const {search} = state;
     return {
-        stage: application.stage
+        text: search.text
     };
 }
 
 export default connect(
     mapStateToProps,
     {
-        setStage: AppActions.setApplicationStage,
-        setDeferedStage: AppActions.setAsyncApplicationStage
+        setSearch: searchActions.setSearch
     }
 )(App);
