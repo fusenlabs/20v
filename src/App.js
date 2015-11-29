@@ -3,21 +3,19 @@ import {connect} from 'react-redux';
 import * as searchActions from './actions/search';
 
 class App extends Component {
-    
     constructor(props) {
         super(props);
     }
-    
     render() {
         return <div>
-            <input type="text" onKeyPress={this._handleKeyPress.bind(this)}/>
+            <input type='text' onKeyPress={this._handleKeyPress.bind(this)}/>
             <span>{this.props.text}</span>
         </div>;
     }
 
     _handleKeyPress(event) {
         if (event.key === 'Enter') {
-            this.props.setSearch('new search')
+            this.props.setSearch('new search');
         }
     }
 }
