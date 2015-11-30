@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 import React, {Component} from 'react';
 import Youtube from 'react-youtube';
 
@@ -25,8 +25,8 @@ class Player extends Component {
                 playlist: list.join(',')
             }
         };
-        return(
-            <Youtube 
+        return (
+            <Youtube
                 url={`http://www.youtube.com/watch?v=${firstVideoId}`}
                 opts={opts}
                 {...other} />

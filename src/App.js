@@ -9,21 +9,26 @@ class App extends Component {
         super(props);
     }
     render() {
-        let player = this.props.showPlayer? this._getPlayer() : null;
-        let triggerDisplayStyle = { display: this.props.resultList.length != 0? 'block' : 'none' };
+        let player = this.props.showPlayer ? this._getPlayer() : null;
+        let triggerDisplayStyle = { display: this.props.resultList.length != 0 ? 'block' : 'none' };
         return <div>
             <input type='text' ref='searchBox' onKeyPress={this._handleKeyPress.bind(this)}/>
             <span>{this.props.searchText}</span>
             <span>{this.props.resultList.length}</span>
-            <button onClick={this._handleStartPlaying.bind(this)} style={triggerDisplayStyle}>Start TV Channel</button>
+            <button onClick={this._handleStartPlaying.bind(this)} style={triggerDisplayStyle}>
+                Start TV Channel
+            </button>
             {player}
         </div>;
     }
 
     _getPlayer() {
-        return(
-            <PlayerManager onClose={this._handleStopPlaying.bind(this)} playlist={this._getFormattedList.bind(this)(this.props.resultList)}></PlayerManager>
-        )
+        return (
+            <PlayerManager
+                onClose={this._handleStopPlaying.bind(this)}
+                playlist={this._getFormattedList.bind(this)(this.props.resultList)}>
+            </PlayerManager>
+        );
     }
 
     _handleStartPlaying() {
@@ -34,9 +39,9 @@ class App extends Component {
         this.props.closePlayer();
     }
 
-    _getFormattedList( spotifyList ) {
-        return spotifyList.map( track => {
-            return track.name + ' - ' + track.artists[0].name.substring(0,40);
+    _getFormattedList(spotifyList) {
+        return spotifyList.map(track => {
+            return track.name + ' - ' + track.artists[0].name.substring(0, 40);
         });
     }
 

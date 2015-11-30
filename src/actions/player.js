@@ -4,7 +4,7 @@ export function changePlayerStatus(isOpen=false) {
     return {
         type: CHANGE_PLAYER_STATUS,
         isOpen: isOpen
-    }
+    };
 }
 export function openPlayer() {
     return changePlayerStatus(true);
