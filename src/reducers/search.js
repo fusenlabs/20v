@@ -1,12 +1,12 @@
 import {ADD_SEARCH, RETURN_SEARCH} from '../constants/search';
 
-const initalState = {
+const initialState = {
     searchText: 'demo',
     isSearching: false,
     resultList: []
 };
 
-export default function search(state = initalState, action) {
+export default function search(state = initialState, action) {
     switch (action.type) {
         case ADD_SEARCH:
             return Object.assign({}, state, action);
