@@ -140,13 +140,14 @@ class PlayerManager extends Component {
         let CGBand = this.refs.CGBand;
         let CloseBtn = this.refs.CloseBtn;
         let duration;
+        let currentTime;
+        let timeout;
 
         if (this._onScreenTimeoutIds.length == 0) {
             //starting video
             this._currentVideoOnPlayer = evt.target;
-            duration = this._currentVideoOnPlayer.getDuration(),
-            currentTime = evt.target.getCurrentTime(),
-            timeout;
+            duration = this._currentVideoOnPlayer.getDuration();
+            currentTime = evt.target.getCurrentTime();
 
             let visualsToShow = this._visualsOnScreen.filter((config) => {
                 timeout = config.showAt * duration / 100;
