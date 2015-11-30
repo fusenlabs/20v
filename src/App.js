@@ -8,14 +8,15 @@ class App extends Component {
     }
     render() {
         return <div>
-            <input type='text' onKeyPress={this._handleKeyPress.bind(this)}/>
-            <span>{this.props.text}</span>
+            <input type='text' ref='searchBox' onKeyPress={this._handleKeyPress.bind(this)}/>
+            <span>{this.props.searchText}</span>
+            <span>{this.props.resultList.length}</span>
         </div>;
     }
 
     _handleKeyPress(event) {
         if (event.key === 'Enter') {
-            this.props.setSearch('new search');
+            this.props.fetchSearch(this.refs.searchBox.value);
         }
     }
 }
@@ -23,13 +24,14 @@ class App extends Component {
 function mapStateToProps(state) {
     const {search} = state;
     return {
-        text: search.text
+        searchText: search.searchText,
+        resultList: search.resultList
     };
 }
 
 export default connect(
     mapStateToProps,
     {
-        setSearch: searchActions.setSearch
+        fetchSearch: searchActions.fetchSearch
     }
 )(App);
