@@ -4,9 +4,10 @@ const initialState = {
     isOpen: false
 };
 
-export default function search(state = initialState, action) {
+export default function (state = initialState, action) {
     switch (action.type) {
         case CHANGE_PLAYER_STATUS:
+            console.log(action);
             return Object.assign({}, state, action);
         default:
             return state;
