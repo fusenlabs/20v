@@ -17,9 +17,9 @@ class App extends Component {
     render() {
         return (
             <div className='app-inner-wrapper'>
-                { this.props.view == VIEWS.HOME ?       this._getHomeLayout()     : null }
-                { this.props.view == VIEWS.RESULTS ?    this._getResultsLayout()  : null }
-                { this.props.view == VIEWS.PLAYER ?     this._getPlayerLayout()   : null }
+                { this.props.view == VIEWS.HOME ? this._getHomeLayout() : null }
+                { this.props.view == VIEWS.RESULTS ? this._getResultsLayout() : null }
+                { this.props.view == VIEWS.PLAYER ? this._getPlayerLayout() : null }
             </div>
         );
     }
@@ -29,7 +29,7 @@ class App extends Component {
             <div className='home-wrapper'>
                 <div className='home-body'>
                     <span>Some text here</span>
-                    <Search></Search>
+                    <Search/>
                     <span>Some other text here</span>
                 </div>
                 <Footer></Footer>
@@ -41,11 +41,11 @@ class App extends Component {
         return (
             <div className='results-wrapper'>
                 <Header>
-                    <Search></Search>
+                    <Search/>
                 </Header>
-                <ResultHeader></ResultHeader>
-                <ResultList></ResultList>
-                <Footer></Footer>
+                <ResultHeader/>
+                <ResultList/>
+                <Footer/>
             </div>
         );
     }

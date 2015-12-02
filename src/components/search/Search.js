@@ -7,8 +7,11 @@ class Search extends Component {
     render() {
         return (
             <div className={'search-wrapper' + (this.props.isSearching ? 'search-mask' : '') }>
-                <input type='text' ref='searchBox'
-                    onKeyPress={this._handleKeyPress.bind(this)}/>
+                <input
+                    type='text'
+                    ref='searchBox'
+                    onKeyPress={this._handleKeyPress.bind(this)}
+                />
                 <span>{this.props.searchText}</span>
             </div>
         );

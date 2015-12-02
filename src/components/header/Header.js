@@ -1,14 +1,9 @@
-'use strict';
 import React, {Component} from 'react';
 
-class Header extends Component {
-    render() {
-        return (
-            <div className='results-header'>
-                {this.props.children}
-            </div>
-        );
-    }
-}
+let Header = ({children}) => (
+    <div className='results-header'>
+        {children}
+    </div>
+);
 
 export default Header;
