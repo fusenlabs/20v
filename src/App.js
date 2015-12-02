@@ -1,42 +1,69 @@
 import React, {Component} from 'react';
 import PlayerManager from './components/player/PlayerManager';
+import Search from './components/search/Search';
+import ResultHeader from './components/results/ResultHeader';
+import ResultList from './components/results/ResultList';
+import Footer from './components/footer/Footer';
+import Header from './components/header/Header';
 import {connect} from 'react-redux';
-import * as searchActions from './actions/search';
 import * as playerActions from './actions/player';
+import * as appActions from './actions/app';
+import {VIEWS} from './constants/app';
 
 class App extends Component {
     constructor(props) {
         super(props);
     }
     render() {
-        let player = this.props.showPlayer ? this._getPlayer() : null;
-        let triggerDisplayStyle = { display: this.props.resultList.length != 0 ? 'block' : 'none' };
-        return <div>
-            <input type='text' ref='searchBox' onKeyPress={this._handleKeyPress.bind(this)}/>
-            <span>{this.props.searchText}</span>
-            <span>{this.props.resultList.length}</span>
-            <button onClick={this._handleStartPlaying.bind(this)} style={triggerDisplayStyle}>
-                Start TV Channel
-            </button>
-            {player}
-        </div>;
-    }
-
-    _getPlayer() {
         return (
-            <PlayerManager
-                onClose={this._handleStopPlaying.bind(this)}
-                playlist={this._getFormattedList.bind(this)(this.props.resultList)}>
-            </PlayerManager>
+            <div className='app-inner-wrapper'>
+                { this.props.view == VIEWS.HOME ?       this._getHomeLayout()     : null }
+                { this.props.view == VIEWS.RESULTS ?    this._getResultsLayout()  : null }
+                { this.props.view == VIEWS.PLAYER ?     this._getPlayerLayout()   : null }
+            </div>
         );
     }
 
-    _handleStartPlaying() {
-        this.props.openPlayer();
+    _getHomeLayout() {
+        return (
+            <div className='home-wrapper'>
+                <div className='home-body'>
+                    <span>Some text here</span>
+                    <Search></Search>
+                    <span>Some other text here</span>
+                </div>
+                <Footer></Footer>
+            </div>
+        );
+    }
+
+    _getResultsLayout() {
+        return (
+            <div className='results-wrapper'>
+                <Header>
+                    <Search></Search>
+                </Header>
+                <ResultHeader></ResultHeader>
+                <ResultList></ResultList>
+                <Footer></Footer>
+            </div>
+        );
+    }
+
+    _getPlayerLayout() {
+        return (
+            <div className='player-wrapper'>
+                <PlayerManager
+                    onClose={this._handleStopPlaying.bind(this)}
+                    playlist={this._getFormattedList.bind(this)(this.props.resultList)}>
+                </PlayerManager>
+            </div>
+        );
     }
 
     _handleStopPlaying() {
-        this.props.closePlayer();
+        //this.props.closePlayer();
+        this.props.goToResults();
     }
 
     _getFormattedList(spotifyList) {
@@ -45,27 +72,23 @@ class App extends Component {
         });
     }
 
-    _handleKeyPress(event) {
-        if (event.key === 'Enter') {
-            this.props.fetchSearch(this.refs.searchBox.value);
-        }
-    }
 }
 
 function mapStateToProps(state) {
-    const {search,player} = state;
+    const {app,search,player} = state;
     return {
         searchText: search.searchText,
         resultList: search.resultList,
-        showPlayer: player.isOpen
+        showPlayer: player.isOpen,
+        view: app.view
     };
 }
 
 export default connect(
     mapStateToProps,
     {
-        fetchSearch: searchActions.fetchSearch,
         openPlayer: playerActions.openPlayer,
-        closePlayer: playerActions.closePlayer
+        closePlayer: playerActions.closePlayer,
+        goToResults: appActions.navigateToResults
     }
 )(App);
