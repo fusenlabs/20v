@@ -77,7 +77,7 @@ let orderByPopularity = (list) => {
 };
 
 let magic = (list, points) => {
-    return alternate(orderByPopularity(closest(alternate(orderByPopularity(list)), points, 30)));
+    return alternate(orderByPopularity(closest(alternate(orderByPopularity(list)), points, 20)));
 };
 
 export default {
