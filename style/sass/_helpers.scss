@@ -86,6 +86,12 @@
 	background: linear-gradient( $fromColor, $toColor );
 }
 
+@mixin simple-gradient($deg, $fromColor, $toColor) {
+	background: $fromColor;
+	background: -webkit-linear-gradient( $deg, $fromColor, $toColor );
+	background: linear-gradient( $deg, $fromColor, $toColor );
+}
+
 @mixin rotate-keyframes-animation( $name, $degStart, $degEnd ) {
 	@-webkit-keyframes $name {
 		0% {
