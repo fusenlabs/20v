@@ -5,28 +5,29 @@
 */
 
 
-
 // FONTS
 @import url('https://fonts.googleapis.com/css?family=Passion+One:400,700,900');
-@import url('https://fonts.googleapis.com/css?family=Changa+One:400,400italic');
-@import url('https://fonts.googleapis.com/css?family=Rubik:400,300,300italic,400italic,500,500italic,700,700italic,900,900italic');
-@import url('https://fonts.googleapis.com/css?family=Exo+2:400,800,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,700,600italic,700italic,800italic,900,900italic');
-@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,800,100,200,300,500,600,700,900');
-
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic');
 
 
 // FONTS
 $font-passion: 'Passion One';
-$font-changa: 'Changa One';
-$font-rubik: 'Rubik';
-$font-exo: 'Exo 2';
-$font-work: 'Work Sans';
+$font-open: 'Open Sans';
+
+
+// COLOURS
+$color-one: #B61CD2;
+$color-two: #F34233;
 
 
 // IMPORTS
 @import 'reset';
 @import 'helpers';
-
+@import '../../src/components/footer/Footer';
+@import '../../src/components/header/Header';
+@import '../../src/components/player/Player';
+@import '../../src/components/results/Results';
+@import '../../src/components/search/Search';
 
 
 // GENERAL
@@ -35,8 +36,17 @@ $font-work: 'Work Sans';
 	-webkit-appearance: none;
 }
 
+html {
+	overflow: hidden;
+}
+
+body {
+	overflow: scroll;
+}
+
 html,
 body {
+	@include simple-gradient( -45deg, $color-one, $color-two );
 	text-rendering: optimizeLegibility;
 	-webkit-text-size-adjust: 100%;
 	-webkit-font-smoothing: antialiased;
@@ -44,19 +54,92 @@ body {
 	font-smooth: always;
 	width: 100%;
 	height: 100%;
-    overflow: hidden;
-    background-color: black;
-    color: white;
+	font-family: $font-open;
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 13px;
+	letter-spacing: -0.04em;
+	color: #FFFFFF;
 }
+
+#appContainer {
+	height: 100%;
+	
+	.app-inner-wrapper {
+		height: 100%;
+	}
+}
+
+
+// HOME
+.home-wrapper {
+	height: 100%;
+	width: 100%;
+	display: table;
+	
+	.home-body {
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+		
+		.intro-logo {
+			margin-bottom: 30px;
+		}
+		
+		.intro-text {
+			font-size: 30px;
+			font-weight: 300;
+			letter-spacing: -0.02em;
+			line-height: 35px;
+			width: 500px;
+			margin: 0 auto;
+		}
+	}
+}
+
+//TRANSITIONS
+.screen-fade-enter {
+  opacity: 0.01;
+}
+
+.screen-fade-enter.screen-fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.screen-fade-leave {
+  opacity: 1;
+}
+
+.screen-fade-leave.screen-fade-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.screen-fade-appear {
+  opacity: 0.01;
+}
+
+.screen-fade-appear.screen-fade-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+
+
+
+
+
+
+
 
 
 
 // LOADING MESSAGE
 .AppLoading {
-    width: 100%;
-    text-align: center;
+	width: 100%;
+	text-align: center;
 }
-
 
 
 // VIDEO PLAYER
@@ -180,7 +263,7 @@ body {
 				@include transition-delay( 0 );
 				@include backface-visibility-fix();
 				@include transform-3d( 1000px, '-100%, 0, 500px' );
-				font-family: $font-exo;
+				font-family: $font-open;
 				font-weight: 300;
 				font-size: 44px;
 				line-height: 40px;

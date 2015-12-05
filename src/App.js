@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import PlayerManager from './components/player/PlayerManager';
 import Search from './components/search/Search';
 import ResultHeader from './components/results/ResultHeader';
 import ResultList from './components/results/ResultList';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
+import AppLogo from './components/AppLogo';
 import {connect} from 'react-redux';
 import * as playerActions from './actions/player';
 import * as appActions from './actions/app';
@@ -17,20 +19,29 @@ class App extends Component {
     render() {
         return (
             <div className='app-inner-wrapper'>
-                { this.props.view == VIEWS.HOME ? this._getHomeLayout() : null }
-                { this.props.view == VIEWS.RESULTS ? this._getResultsLayout() : null }
-                { this.props.view == VIEWS.PLAYER ? this._getPlayerLayout() : null }
+                <ReactCSSTransitionGroup
+                    transitionName='screen-fade'
+                    transitionAppear={true}
+                    transitionEnterTimeout={500}
+                    transitionLeaveTimeout={300}
+                >
+                    { this.props.view == VIEWS.HOME ? this._getHomeLayout() : null }
+                    { this.props.view == VIEWS.PLAYER ? this._getPlayerLayout() : null }
+                    { this.props.view == VIEWS.RESULTS ? this._getResultsLayout() : null }
+                </ReactCSSTransitionGroup>
             </div>
         );
     }
 
     _getHomeLayout() {
         return (
-            <div className='home-wrapper'>
+            <div className='home-wrapper' key={this.props.view}>
                 <div className='home-body'>
-                    <span>Some text here</span>
+                    <AppLogo/>
+                    <p className='intro-text'>
+                        Create and enjoy a custom music channel based on a single song
+                    </p>
                     <Search/>
-                    <span>Some other text here</span>
                 </div>
                 <Footer></Footer>
             </div>
@@ -39,10 +50,8 @@ class App extends Component {
 
     _getResultsLayout() {
         return (
-            <div className='results-wrapper'>
-                <Header>
-                    <Search/>
-                </Header>
+            <div className='results-wrapper' key={this.props.view}>
+                <Header/>
                 <ResultHeader/>
                 <ResultList/>
                 <Footer/>
@@ -52,7 +61,7 @@ class App extends Component {
 
     _getPlayerLayout() {
         return (
-            <div className='player-wrapper'>
+            <div className='player-wrapper' key={this.props.view}>
                 <PlayerManager
                     onClose={this._handleStopPlaying.bind(this)}
                     playlist={this._getFormattedList.bind(this)(this.props.resultList)}>
