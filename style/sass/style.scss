@@ -97,7 +97,33 @@ body {
 	}
 }
 
+//TRANSITIONS
+.screen-fade-enter {
+  opacity: 0.01;
+}
 
+.screen-fade-enter.screen-fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.screen-fade-leave {
+  opacity: 1;
+}
+
+.screen-fade-leave.screen-fade-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.screen-fade-appear {
+  opacity: 0.01;
+}
+
+.screen-fade-appear.screen-fade-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
 
 
 
