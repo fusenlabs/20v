@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import App from './App';
 import configureStore from './store/StoreManager';
 
+require('./../style/sass/style.scss');
+
 let store = configureStore();
 
 ReactDom.render(
