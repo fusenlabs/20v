@@ -27,7 +27,11 @@ class PlayerManager extends Component {
         this._currentVideoOnPlayer;
         this._onScreenTimeoutIds = [];
 
-        //console.log(this.props.playlist[0]);
+        //note: when we implement resuming playing, we must
+        //preserve currentPlayListIds.
+        //by now clear it to renew the currentPlaylist with externalPlaylist
+        currentPlayListIds = [];
+
         externalList = this.props.playlist;
 
         //on-screen info configuration

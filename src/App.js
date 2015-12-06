@@ -22,6 +22,7 @@ class App extends Component {
                 <ReactCSSTransitionGroup
                     transitionName='screen-fade'
                     transitionAppear={true}
+                    transitionAppearTimeout={500}
                     transitionEnterTimeout={500}
                     transitionLeaveTimeout={300}
                 >
