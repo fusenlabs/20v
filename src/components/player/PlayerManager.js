@@ -24,6 +24,9 @@ class PlayerManager extends Component {
             });
 
         //initialization
+        this._player = null;
+        this._lazyList = [];
+        this._isLazy = false;
         this._currentVideoOnPlayer;
         this._onScreenTimeoutIds = [];
 
@@ -31,7 +34,6 @@ class PlayerManager extends Component {
         //preserve currentPlayListIds.
         //by now clear it to renew the currentPlaylist with externalPlaylist
         currentPlayListIds = [];
-
         externalList = this.props.playlist;
 
         //on-screen info configuration
@@ -73,12 +75,8 @@ class PlayerManager extends Component {
 
     _collectVideosId() {
         if (externalList.length == 0) {
-            this.setState({
-                loading: false,
-                playlist: currentPlayListIds,
-                showCGBand: false,
-                currentVideoTitle: videos.get(currentPlayListIds[0]).title
-            });
+            //inject playlist into player
+            this._lazyLoad(currentPlayListIds);
         } else {
             let videoTitle = externalList.shift();
             Video.where(videoTitle)
@@ -86,6 +84,15 @@ class PlayerManager extends Component {
                 if (page.elements.length > 0) {
                     currentPlayListIds.push(page.firstElement().id);
                     videos.set(page.firstElement().id, page.firstElement());
+                }
+                if (currentPlayListIds.length == 1) {
+                    //start with first collected video
+                    this.setState({
+                        loading: false,
+                        playlist: [currentPlayListIds[0]],
+                        showCGBand: false,
+                        currentVideoTitle: videos.get(currentPlayListIds[0]).title
+                    });
                 }
                 this._collectVideosId();
             });
@@ -124,17 +131,21 @@ class PlayerManager extends Component {
     }
 
     _onReadyHandler(evt) {
-        //console.log(evt);
+        this._player = evt.target;
     }
 
     _onEndHandler(evt) {
-        //console.log('END');
+
+        if (this._isLazy) {
+            this._isLazy = false;
+            this._player.loadPlaylist(currentPlayListIds, 1);
+            this._player.setLoop(true);
+        }
         this._resetOnScreenTimers();
     }
 
     _onPauseHandler(evt) {
-        //console.log('SHOW FOOTER ON PAUSE');
-        this.refs.CGBand.show(evt.target.getVideoData().title);
+        this.refs.CGBand.show(this._player.getVideoData().title);
         this.refs.CloseBtn.style.display = 'block';
 
         this._resetOnScreenTimers();
@@ -143,21 +154,16 @@ class PlayerManager extends Component {
     _onPlayHandler(evt) {
         let CGBand = this.refs.CGBand;
         let CloseBtn = this.refs.CloseBtn;
-        let duration;
-        let currentTime;
+        let duration = this._player.getDuration();
+        let currentTime = this._player.getCurrentTime();
         let timeout;
 
-        if (this._onScreenTimeoutIds.length == 0) {
+        if (this._onScreenTimeoutIds.length == 0 && duration != 0) {
             //starting video
-            this._currentVideoOnPlayer = evt.target;
-            duration = this._currentVideoOnPlayer.getDuration();
-            currentTime = evt.target.getCurrentTime();
-
             let visualsToShow = this._visualsOnScreen.filter((config) => {
                 timeout = config.showAt * duration / 100;
                 return timeout >= currentTime;
             });
-            //console.log(visualsToShow);
             for (let config of visualsToShow) {
                 timeout = (config.showAt * duration / 100) - currentTime;
                 ((config, player) => {
@@ -166,17 +172,14 @@ class PlayerManager extends Component {
                             CGBand.show(config.getData(player), config.hideIn);
                         }, timeout * 1000)
                     );
-                })(config, evt.target);
+                })(config, this._player);
             }
         }
-        //console.log('HIDE FOOTER ON RESUME');
         CGBand.hide();
         CloseBtn.style.display = 'none';
     }
 
     _onStateChangeHandler(evt) {
-        //console.log('STATE CHANGE');
-        //console.log(evt);
     }
 
     _resetOnScreenTimers() {
@@ -184,6 +187,11 @@ class PlayerManager extends Component {
             clearTimeout(TId);
         }
         this._onScreenTimeoutIds = [];
+    }
+
+    _lazyLoad(list) {
+        this._lazyList = list;
+        this._isLazy = true;
     }
 
 }

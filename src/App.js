@@ -27,8 +27,8 @@ class App extends Component {
                     transitionLeaveTimeout={300}
                 >
                     { this.props.view == VIEWS.HOME ? this._getHomeLayout() : null }
-                    { this.props.view == VIEWS.PLAYER ? this._getPlayerLayout() : null }
                     { this.props.view == VIEWS.RESULTS ? this._getResultsLayout() : null }
+                    { this.props.view == VIEWS.PLAYER ? this._getPlayerLayout() : null }
                 </ReactCSSTransitionGroup>
             </div>
         );
@@ -72,8 +72,7 @@ class App extends Component {
     }
 
     _handleStopPlaying() {
-        //this.props.closePlayer();
-        this.props.goToResults();
+        this.props.goToHome();
     }
 
     _getFormattedList(spotifyList) {
@@ -99,6 +98,6 @@ export default connect(
     {
         openPlayer: playerActions.openPlayer,
         closePlayer: playerActions.closePlayer,
-        goToResults: appActions.navigateToResults
+        goToHome: appActions.navigateToHome
     }
 )(App);

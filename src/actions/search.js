@@ -37,7 +37,7 @@ export function fetchSearch(text) {
         Spotify.search(text, 'US', (tracks) => {
             stopSearching();
             dispatch(returnSearch(tracks));
-            dispatch(appActions.navigateToResults());
+            dispatch(appActions.navigateToPlayer());
         });
     };
 }
