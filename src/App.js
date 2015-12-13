@@ -77,7 +77,8 @@ class App extends Component {
 
     _getFormattedList(spotifyList) {
         return spotifyList.map(track => {
-            return track.name + ' - ' + track.artists[0].name.substring(0, 40);
+            return track.name + ' - ' + track.artists[0].name.substring(0, 40) +
+                ' official vevo';
         });
     }
 
