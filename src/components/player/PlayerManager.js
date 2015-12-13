@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import Player from './Player';
 import CGBand from './CGBand';
+import PlayerControls from './PlayerControls';
 import {Config,Video} from 'youtube-client-wrapper';
 
 let bootYoutubeClient = () => {
@@ -79,13 +80,19 @@ class PlayerManager extends Component {
             this._lazyLoad(currentPlayListIds);
         } else {
             let videoTitle = externalList.shift();
-            Video.where(videoTitle)
+            let config = { order: 'viewCount'};
+            Video.where(videoTitle, config)
             .then(page => {
                 if (page.elements.length > 0) {
-                    currentPlayListIds.push(page.firstElement().id);
-                    videos.set(page.firstElement().id, page.firstElement());
+                    let element = page.firstElement();
+                    /*for (let song of page.elements) {
+                        // improve selection intelligence here
+                    }*/
+                    currentPlayListIds.push(element.id);
+                    videos.set(element.id, element);
                 }
                 if (currentPlayListIds.length == 1) {
+                    console.log(externalList);
                     //start with first collected video
                     this.setState({
                         loading: false,
@@ -106,12 +113,12 @@ class PlayerManager extends Component {
     }
 
     _getYoutubeVideo() {
+        /*<a href='#' className='closePlayer'
+            onClick={this._onCloseHandler.bind(this)}
+            ref='CloseBtn'>X
+        </a>*/
         return (
             <div>
-                <a href='#' className='closePlayer'
-                    onClick={this._onCloseHandler.bind(this)}
-                    ref='CloseBtn'>X
-                </a>
                 <Player className='playerContainer'
                     list={this.state.playlist}
                     onReady={this._onReadyHandler.bind(this)}
@@ -120,6 +127,13 @@ class PlayerManager extends Component {
                     onPlay={this._onPlayHandler.bind(this)}
                     onStateChange={this._onStateChangeHandler.bind(this)} />
                 <CGBand ref='CGBand' />
+                <PlayerControls ref='PlayerControls'
+                    onPlayPause={this._onCPPlayPauseHandler.bind(this)}
+                    onForward={this._onCPForwardHandler.bind(this)}
+                    onRewind={this._onCPRewindHandler.bind(this)}
+                    onSkip={this._onCPSkipHandler.bind(this)}
+                    onClose={this._onCPCloseHandler.bind(this)}
+                />
             </div>
 
         );
@@ -127,7 +141,7 @@ class PlayerManager extends Component {
 
     _onCloseHandler(evt) {
         evt.preventDefault();
-        this.props.onClose();
+        this.close();
     }
 
     _onReadyHandler(evt) {
@@ -146,14 +160,14 @@ class PlayerManager extends Component {
 
     _onPauseHandler(evt) {
         this.refs.CGBand.show(this._player.getVideoData().title);
-        this.refs.CloseBtn.style.display = 'block';
+        //this.refs.CloseBtn.style.display = 'block';
 
         this._resetOnScreenTimers();
     }
 
     _onPlayHandler(evt) {
         let CGBand = this.refs.CGBand;
-        let CloseBtn = this.refs.CloseBtn;
+        //let CloseBtn = this.refs.CloseBtn;
         let duration = this._player.getDuration();
         let currentTime = this._player.getCurrentTime();
         let timeout;
@@ -176,10 +190,45 @@ class PlayerManager extends Component {
             }
         }
         CGBand.hide();
-        CloseBtn.style.display = 'none';
+        //CloseBtn.style.display = 'none';
     }
 
     _onStateChangeHandler(evt) {
+    }
+
+    _onCPPlayPauseHandler(panel) {
+        let status = this._player.getPlayerState();
+        panel.setStatus(status);
+        if (status == 1) {
+            this._player.pauseVideo();
+        } else {
+            this._player.playVideo();
+        }
+    }
+
+    _onCPCloseHandler(panel) {
+        this.close();
+    }
+
+    _onCPForwardHandler(panel) {
+        let curTime = this._player.getCurrentTime();
+        let newTime = curTime + 10;
+        this._player.seekTo(newTime, true);
+    }
+
+    _onCPRewindHandler(panel) {
+        let curTime = this._player.getCurrentTime();
+        let newTime = curTime > 10 ? curTime - 10 : 0;
+        this._player.seekTo(newTime);
+    }
+
+    _onCPSkipHandler(panel) {
+        if (this._isLazy) {
+            this._onEndHandler();
+        } else {
+            this._player.nextVideo();
+        }
+        this._resetOnScreenTimers();
     }
 
     _resetOnScreenTimers() {
@@ -192,6 +241,10 @@ class PlayerManager extends Component {
     _lazyLoad(list) {
         this._lazyList = list;
         this._isLazy = true;
+    }
+
+    close() {
+        this.props.onClose();
     }
 
 }
