@@ -92,7 +92,6 @@ class PlayerManager extends Component {
                     videos.set(element.id, element);
                 }
                 if (currentPlayListIds.length == 1) {
-                    console.log(externalList);
                     //start with first collected video
                     this.setState({
                         loading: false,
