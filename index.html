@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Youtube Playlist Player</title>
+    <!--link rel="stylesheet" type="text/css" href="style/style.css" /-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div id="appContainer"></div>
+    
+    <script>
+        window.OnGoogleAPILoadCallback = function () {
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.src = "./static/bundle.js";
+            document.body.appendChild(s);
+        }
+    </script>
+    <script src="https://apis.google.com/js/client.js?onload=OnGoogleAPILoadCallback"></script>
+</body>
+</html>
