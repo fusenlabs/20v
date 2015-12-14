@@ -36,7 +36,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "build": "./node_modules/.bin/webpack --config webpack.config.production.js",
+    "build": "node ./bin/build.js",
+    "deploy": "node ./bin/deploy.js",
+    "git-commit": "git add -A . && git commit -a -m 'gh-pages update'",
+    "git-push": "git push origin gh-pages --force && git checkout master",
+    "deploy": "npm run build && npm run git-commit && npm run git-push",
     "lint": "./node_modules/.bin/eslint ."
   },
   "author": "@Cosmitar",
