@@ -18,5 +18,4 @@ var gitCommands = [
 ].join(' && ');
 
 exec(copyFilesCommands, puts);
-//exec('cd ./page && git status', puts);
 exec(gitCommands, puts);
