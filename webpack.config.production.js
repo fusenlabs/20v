@@ -72,6 +72,14 @@ module.exports = {
         test: /\.jsx?$/,
         loaders: ['babel'],
         include: path.join(__dirname, 'src')
+      },
+      {
+          test: /\.scss$/,
+          loader: 'style!css!sass'
+      },
+      {
+          test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$/,
+          loader: 'file'
       }
     ]
   }
