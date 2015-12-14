@@ -37,8 +37,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "build": "node ./bin/build.js",
-    "gh-page-push": "node ./bin/gh-deploy.js",
-    "deploy": "npm run gh-page-push",
+    "gh-deploy": "node ./bin/gh-deploy.js",
+    "deploy": "npm run gh-deploy",
     "predeploy": "npm run build",
     "lint": "./node_modules/.bin/eslint ."
   },
