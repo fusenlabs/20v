@@ -36,7 +36,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "build": "./node_modules/.bin/webpack --config webpack.config.production.js",
+    "build": "node ./bin/build.js",
+    "gh-deploy": "node ./bin/gh-deploy.js",
+    "deploy": "npm run gh-deploy",
+    "predeploy": "npm run build",
     "lint": "./node_modules/.bin/eslint ."
   },
   "author": "@Cosmitar",
