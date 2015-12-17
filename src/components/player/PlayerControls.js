@@ -3,8 +3,12 @@ import React, {Component} from 'react';
 class PlayerControls extends Component {
     constructor(props) {
         super(props);
-        this.state = { show: false, status: 2 };
+        this.state = { show: false, status: 1 };
         this.timeoutId;
+    }
+
+    componentDidMount() {
+        this.props.onReady(this);
     }
 
     render() {
@@ -13,10 +17,10 @@ class PlayerControls extends Component {
             <div className={'PlayerControls custom-player-controls-wrapper' + showClass}
                 onMouseMove={this._handleMouseMove.bind(this)}>
 
-                <div className="video-close">
-	                <a href='#' onClick={this._handleClose.bind(this)}>
-	                	&times;
-	                </a>
+                <div className='video-close'>
+                    <a href='#' onClick={this._handleClose.bind(this)}>
+                        &times;
+                    </a>
                 </div>
 
                 <div className='video-next'>
@@ -25,15 +29,15 @@ class PlayerControls extends Component {
                     </a>
                 </div>
 
-                <div className="video-playback-controls">
-	                <div className="video-play-pause">
-	                    <a href='#' onClick={this._handlePlayPause.bind(this)}>
-	                        { this.state.status == 1 ?
-	                            <i className='fa fa-play'></i> :
-	                            <i className='fa fa-pause'></i>
-	                        }
-	                    </a>
-	                </div>
+                <div className='video-playback-controls'>
+                    <div className='video-play-pause'>
+                        <a href='#' onClick={this._handlePlayPause.bind(this)}>
+                            { this.state.status == 1 ?
+                                <i className='fa fa-pause'></i> :
+                                <i className='fa fa-play'></i>
+                            }
+                        </a>
+                    </div>
 
                     <div className='video-backward'>
                         <a href='#' onClick={this._handleRewind10.bind(this)}>
@@ -83,10 +87,11 @@ class PlayerControls extends Component {
 
     _handleMouseMove(event) {
         event.preventDefault();
-        if (this.state.show) {
+        if (!this.state.show) {
+            this.setState(Object.assign(this.state, { show: true }));
+        } else {
             clearTimeout(this.timeoutId);
         }
-        this.setState(Object.assign(this.state, { show: true }));
         this.timeoutId = setTimeout(()=> {
             this.setState(Object.assign(this.state, { show: false }));
         }, 2500);
@@ -99,11 +104,12 @@ class PlayerControls extends Component {
 
 PlayerControls.defaultProps = {
     videoTitle: '',
-    onClose: ()=> {},
+    onReady: ()=> {},
     onPlayPause: ()=> {},
     onRewind: ()=> {},
     onForward: ()=> {},
-    onSkip: ()=> {}
+    onSkip: ()=> {},
+    onClose: ()=> {}
 };
 
 export default PlayerControls;
