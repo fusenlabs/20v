@@ -30,6 +30,8 @@ class PlayerManager extends Component {
         this._isLazy = false;
         this._currentVideoOnPlayer;
         this._onScreenTimeoutIds = [];
+        //custom youtube player controls
+        this._playerControls = null;
 
         //note: when we implement resuming playing, we must
         //preserve currentPlayListIds.
@@ -112,10 +114,6 @@ class PlayerManager extends Component {
     }
 
     _getYoutubeVideo() {
-        /*<a href='#' className='closePlayer'
-            onClick={this._onCloseHandler.bind(this)}
-            ref='CloseBtn'>X
-        </a>*/
         return (
             <div>
                 <Player className='playerContainer'
@@ -126,7 +124,8 @@ class PlayerManager extends Component {
                     onPlay={this._onPlayHandler.bind(this)}
                     onStateChange={this._onStateChangeHandler.bind(this)} />
                 <CGBand ref='CGBand' />
-                <PlayerControls ref='PlayerControls'
+                <PlayerControls
+                    onReady={this._onCPReady.bind(this)}
                     onPlayPause={this._onCPPlayPauseHandler.bind(this)}
                     onForward={this._onCPForwardHandler.bind(this)}
                     onRewind={this._onCPRewindHandler.bind(this)}
@@ -145,6 +144,8 @@ class PlayerManager extends Component {
 
     _onReadyHandler(evt) {
         this._player = evt.target;
+        //onStateChange prop on Player doesn't work.
+        this._player.addEventListener('onStateChange', this._onStateChangeHandler.bind(this));
     }
 
     _onEndHandler(evt) {
@@ -166,7 +167,6 @@ class PlayerManager extends Component {
 
     _onPlayHandler(evt) {
         let CGBand = this.refs.CGBand;
-        //let CloseBtn = this.refs.CloseBtn;
         let duration = this._player.getDuration();
         let currentTime = this._player.getCurrentTime();
         let timeout;
@@ -189,15 +189,19 @@ class PlayerManager extends Component {
             }
         }
         CGBand.hide();
-        //CloseBtn.style.display = 'none';
     }
 
     _onStateChangeHandler(evt) {
+        let status = this._player.getPlayerState();
+        this._playerControls.setStatus(status);
+    }
+
+    _onCPReady(panel) {
+        this._playerControls = panel;
     }
 
     _onCPPlayPauseHandler(panel) {
         let status = this._player.getPlayerState();
-        panel.setStatus(status);
         if (status == 1) {
             this._player.pauseVideo();
         } else {
