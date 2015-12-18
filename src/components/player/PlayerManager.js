@@ -12,7 +12,6 @@ let bootYoutubeClient = () => {
             .boot();
 };
 
-let currentPlayListIds = [];
 let videos = new Map();
 let externalList = [];
 class PlayerManager extends Component {
@@ -34,9 +33,9 @@ class PlayerManager extends Component {
         this._playerControls = null;
 
         //note: when we implement resuming playing, we must
-        //preserve currentPlayListIds.
-        //by now clear it to renew the currentPlaylist with externalPlaylist
-        currentPlayListIds = [];
+        //preserve videos map.
+        //by now clear it to renew the videos map with externalPlaylist
+        videos = new Map();
         externalList = this.props.playlist;
 
         //on-screen info configuration
@@ -65,7 +64,7 @@ class PlayerManager extends Component {
 
         this.state = {
             loading: true,
-            playlist: currentPlayListIds,
+            playlist: videos.keys(),
             showCGBand: false,
             currentVideoTitle: ''
         };
@@ -79,7 +78,7 @@ class PlayerManager extends Component {
     _collectVideosId() {
         if (externalList.length == 0) {
             //inject playlist into player
-            this._lazyLoad(currentPlayListIds);
+            this._lazyLoad(Array.from(videos.keys()));
         } else {
             let videoTitle = externalList.shift();
             let config = { order: 'viewCount'};
@@ -90,16 +89,16 @@ class PlayerManager extends Component {
                     /*for (let song of page.elements) {
                         // improve selection intelligence here
                     }*/
-                    currentPlayListIds.push(element.id);
                     videos.set(element.id, element);
                 }
-                if (currentPlayListIds.length == 1) {
+                if (videos.size == 1) {
                     //start with first collected video
+                    let firstId = Array.from(videos.keys())[0];
                     this.setState({
                         loading: false,
-                        playlist: [currentPlayListIds[0]],
+                        playlist: [firstId],
                         showCGBand: false,
-                        currentVideoTitle: videos.get(currentPlayListIds[0]).title
+                        currentVideoTitle: videos.get(firstId).title
                     });
                 }
                 this._collectVideosId();
@@ -152,7 +151,7 @@ class PlayerManager extends Component {
 
         if (this._isLazy) {
             this._isLazy = false;
-            this._player.loadPlaylist(currentPlayListIds, 1);
+            this._player.loadPlaylist(this._lazyList, 1);
             this._player.setLoop(true);
         }
         this._resetOnScreenTimers();
