@@ -6,14 +6,6 @@ import * as searchActions from './../../actions/search';
 import Spotify from './../../core/Spotify';
 
 class Search extends Component {
-    _handleKeyPress(event) {
-        if (event.key === 'Enter') {
-            const text = event.target.value;
-            if (text.length > 3) {
-                this._search(text);
-            }
-        }
-    }
     render() {
         var time;
         let getSuggestions = (input, callback) => {
@@ -69,6 +61,15 @@ class Search extends Component {
                 <span className='hide'>{this.props.searchText}</span>
             </div>
         );
+    }
+
+    _handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            const text = event.target.value;
+            if (text.length > 3) {
+                this._search(text);
+            }
+        }
     }
 }
 
