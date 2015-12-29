@@ -5,7 +5,7 @@
 	position: relative;
 	margin: 0 auto;
 	margin-top: 30px;
-	
+
 	input {
 		@include border-radius( 50px );
 		width: 100%;
@@ -22,7 +22,7 @@
 		line-height: 50px;
 		color: $color-one;
 		cursor: pointer;
-		
+
 		&::-webkit-input-placeholder {
 			color: $color-one;
 		}
@@ -39,18 +39,39 @@
 			color: $color-one;
 		}
 	}
-	
+
 	.search-icon {
 		position: absolute;
 		right: 18px;
 		top: 13px;
-		
+
 		* {
 			fill: $color-one;
 		}
 	}
-	
+
 	.hide {
 		display: none;
 	}
+
+    .react-autosuggest__suggestions {
+        width: 100%;
+        margin: 10px 0 0 0;
+        padding: 0px;
+        list-style: none;
+        position: absolute;
+        z-index: 2
+    }
+
+    .react-autosuggest__suggestion {
+        color: #3460F2;
+        padding: 15px;
+        background: #fff;
+        cursor: pointer;
+    }
+
+    .react-autosuggest__suggestion--focused {
+        background: #3460F2;
+        color: #fff;
+    }
 }
