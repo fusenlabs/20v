@@ -63,26 +63,31 @@ class PlayerControls extends Component {
     _handleRewind10(event) {
         event.preventDefault();
         this.props.onRewind(this);
+        ga('send', 'event', 'click', 'player', 'rewind10');
     }
 
     _handlePlayPause(event) {
         event.preventDefault();
         this.props.onPlayPause(this);
+        ga('send', 'event', 'click', 'player', 'play/pause');
     }
 
     _handleForward10(event) {
         event.preventDefault();
         this.props.onForward(this);
+        ga('send', 'event', 'click', 'player', 'forward10');
     }
 
     _handleSkip(event) {
         event.preventDefault();
         this.props.onSkip(this);
+        ga('send', 'event', 'click', 'player', 'skip');
     }
 
     _handleClose(event) {
         event.preventDefault();
         this.props.onClose(this);
+        ga('send', 'event', 'click', 'player', 'close');
     }
 
     _handleMouseMove(event) {
