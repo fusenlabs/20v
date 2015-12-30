@@ -20,7 +20,7 @@ class Search extends Component {
         };
 
         let suggestionRenderer = (track) => {
-            return <span>{track.name}, {track.artists.first().name}</span>;
+            return <span key={track.id}>{track.name}, {track.artists.first().name}</span>;
         };
 
         let getSuggestionValue = (track) => {
@@ -40,8 +40,7 @@ class Search extends Component {
             type: 'text',
             ref: 'searchInput',
             className: 'input-search',
-            placeholder: 'Just type a song name and press Enter',
-            onKeyPress: this._handleKeyPress.bind(this)
+            placeholder: 'Just type a song name and press Enter'
         };
         return (
             <div className={'search-wrapper' + (this.props.isSearching ? 'search-mask' : '') }>
@@ -61,15 +60,6 @@ class Search extends Component {
                 <span className='hide'>{this.props.searchText}</span>
             </div>
         );
-    }
-
-    _handleKeyPress(event) {
-        if (event.key === 'Enter') {
-            const text = event.target.value;
-            if (text.length > 3) {
-                this._search(text);
-            }
-        }
     }
 }
 
