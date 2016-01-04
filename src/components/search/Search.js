@@ -33,6 +33,7 @@ class Search extends Component {
 
         let onSuggestionSelected = (suggestion) => {
             this.props.fetchSearch(suggestion);
+            ga('send', 'event', 'event', 'new-search', suggestion);
         };
 
         const inputAttributes = {
