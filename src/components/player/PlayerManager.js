@@ -172,6 +172,8 @@ class PlayerManager extends Component {
 
         if (this._onScreenTimeoutIds.length == 0 && duration != 0) {
             //starting video
+            let videoData = this._player.getVideoData();
+            ga('send', 'event', 'video', 'play', `{videoData.video_id}-{videoData.title}`);
             let visualsToShow = this._visualsOnScreen.filter((config) => {
                 timeout = config.showAt * duration / 100;
                 return timeout >= currentTime;
@@ -225,6 +227,8 @@ class PlayerManager extends Component {
     }
 
     _onCPSkipHandler(panel) {
+        let videoData = this._player.getVideoData();
+        ga('send', 'event', 'video', 'skip', `{videoData.video_id}-{videoData.title}`);
         if (this._isLazy) {
             this._onEndHandler();
         } else {
