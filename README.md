@@ -3,6 +3,7 @@ An app to enjoy a music channel with your favorite videos
 
 ## Devel
 Site structure based in components
+
 Home: 
 ````
 <Body>
