@@ -11,6 +11,10 @@ class PlayerControls extends Component {
         this.props.onReady(this);
     }
 
+    componentWillUnmount() {
+        clearTimeout(this.timeoutId);
+    }
+
     render() {
         let showClass = this.state.show ? 'in' : '';
         return (

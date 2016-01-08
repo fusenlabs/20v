@@ -13,6 +13,10 @@ class CGBand extends Component {
         };
     }
 
+    componentWillUnmount() {
+        clearTimeout(this._timeoutId);
+    }
+
     render() {
         let CGClass = 'CGBand skew' + (this.state.show ? ' in' : '');
         let videoTitle = this.state.videoTitle || this.props.videoTitle || '';

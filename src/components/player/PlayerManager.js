@@ -70,6 +70,12 @@ class PlayerManager extends Component {
         };
     }
 
+    componentWillUnmount() {
+        for (let TId of this._onScreenTimeoutIds) {
+            clearTimeout(TId);
+        }
+    }
+
     render() {
         let content = this.state.loading ? this._getLoadingComponent() : this._getYoutubeVideo();
         return (content);
