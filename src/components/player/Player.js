@@ -20,6 +20,7 @@ class Player extends Component {
                 iv_load_policy: 3,//disable anotations
                 loop: 1,
                 rel: 0,
+                class: 'youtube-player',
                 showinfo: 0,
                 modestbranding: 1,//remove watermark/logo
                 playlist: list.join(',')

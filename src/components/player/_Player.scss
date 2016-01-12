@@ -1,5 +1,8 @@
 // 20V - PLAYER
 
+iframe {
+}
+
 .PlayerControls {
 	position: absolute;
 	width: 100%;
@@ -58,6 +61,12 @@
 				line-height: 60px;
 				margin-left: -5px;
 				padding-left: 10px;
+			}
+		}
+
+		@media (max-width: 800px){
+			span {
+				display: none;
 			}
 		}
 	}
@@ -149,6 +158,17 @@
 		height: 100%;
 		position: absolute;
 		z-index: 10;
+
+		@media (max-width: 800px){
+			width: 100%;
+			height: 30%;
+			top: auto;
+			bottom: 0;
+		}
+
+		@media (max-width: 400px){
+			height: 150px;
+		}
 	
 		.background {
 			@include transition( 0.8s, all, ease-in-out );
@@ -167,6 +187,17 @@
 
 			-webkit-animation: background-rotate 12s infinite linear;
 			animation: background-rotate 12s infinite linear;
+			
+			@media (max-width: 800px){
+				-webkit-animation: background-rotate 20s infinite linear;
+				animation: background-rotate 20s infinite linear;
+				margin-top: 0;
+				margin-left: -1000px;
+			}
+
+			@media (max-width: 400px){
+				margin-left: -500px;
+			}			
 		}
 
 		.content-wrapper {
@@ -182,6 +213,10 @@
 				height: 50%;
 				width: 100%;
 				padding: 0 150px 0 50px;
+
+				@media (max-width: 800px){
+					padding: 20px;
+				}
 			}
 
 			.bottom-row {
@@ -189,6 +224,15 @@
 				height: 50%;
 				width: 75%;
 				padding: 0 150px 0 50px;
+
+				@media (max-width: 800px){
+					width: 100%;
+					padding: 20px;
+				}
+
+				@media (max-width: 400px){
+					padding: 0 20px;
+				}
 			}
 			
 			h1 {
@@ -210,6 +254,18 @@
 				vertical-align: bottom;
 				position: relative;
 				text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+
+				@media (max-width: 800px){
+					font-size: 60px;
+					line-height: 45px;
+					padding-bottom: 40px;
+				}
+
+				@media (max-width: 400px){
+					font-size: 30px;
+					line-height: 35px;
+					padding-bottom: 20px;
+				}
 				
 				&:after {
 					@include transition( 0.5s, all, ease-in-out );
@@ -222,6 +278,10 @@
 					height: 4px;
 					background-color: #FFFFFF;
 					opacity: 0.5;
+
+					@media (max-width: 800px){
+						height: 2px;
+					}
 				}
 			}
 
@@ -244,12 +304,33 @@
 				text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 				-webkit-transform-origin: center center;
 				transform-origin: center center;
+
+				@media (max-width: 800px){
+					font-size: 30px;
+					line-height: 30px;
+					vertical-align: top;
+				}
+
+				@media (max-width: 400px){
+					font-size: 20px;
+					line-height: 22px;
+					vertical-align: top;
+				}
 			}
 		}
 
 		&.in {
 			.background {
 				margin-left: -200px;
+
+				@media (max-width: 800px){
+					margin-left: -100px;
+					top: -20px;
+				}
+
+				@media (max-width: 400px){
+					margin-left: -50px;
+				}
 			}
 
 			.content-wrapper {

@@ -81,11 +81,25 @@ body {
 		display: table-cell;
 		vertical-align: middle;
 		text-align: center;
+		vertical-align: top;
+		padding-top: 100px;
 		
 		.intro-logo {
 			margin-bottom: 30px;
+			width: 170px;
+			height: 70px;
+
+			@media (max-width: 600px){
+				width: 150px;
+				height: (150*70px)/170;
+			}
+
+			@media (max-width: 400px){
+				width: 110px;
+				height: (110*70px)/170;
+			}
 		}
-		
+
 		.intro-text {
 			font-size: 30px;
 			font-weight: 300;
@@ -93,6 +107,24 @@ body {
 			line-height: 35px;
 			width: 500px;
 			margin: 0 auto;
+
+			@media (max-width: 600px){
+				width: 100%;
+				padding: 0 50px;
+				font-size: 26px;
+				line-height: 25px;
+			}
+
+			@media (max-width: 400px){
+				width: 100%;
+				padding: 0 30px;
+				font-size: 22px;
+				line-height: 24px;
+			}
+		}
+
+		@media (max-width: 400px){
+			padding-top: 40px;
 		}
 	}
 }

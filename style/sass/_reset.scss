@@ -67,7 +67,9 @@ a:visited {
 }
 
 a:focus {
-	outline: thin dotted;
+	outline: none;
+	-webkit-appearance: none;
+	-webkit-border: none;
 }
 
 a:active,
