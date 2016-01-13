@@ -3,10 +3,7 @@
 var exec = require('child_process').exec;
 function puts(error, stdout, stderr) { console.log(stdout); }
 var copyFilesCommands = [
-    'cp ./index.html ./page/',
-    'echo "www.20v.co" > ./page/CNAME',
-    //'cp -r ./style/fonts/ ./page/',
-    //'cp ./style/style.css ./page/style/',
+    'cp -R ./public/* ./page/',
     'rm -rf ./page/static',
     'cp -r ./dist/ ./page/static/',
 ].join(' && ');

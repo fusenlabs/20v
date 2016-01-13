@@ -23,11 +23,11 @@ $color-two: #1BD27F;
 // IMPORTS
 @import 'reset';
 @import 'helpers';
-@import '../../src/components/footer/Footer';
-@import '../../src/components/header/Header';
-@import '../../src/components/player/Player';
-@import '../../src/components/results/Results';
-@import '../../src/components/search/Search';
+@import '../src/components/footer/Footer';
+@import '../src/components/header/Header';
+@import '../src/components/player/Player';
+@import '../src/components/results/Results';
+@import '../src/components/search/Search';
 
 
 // GENERAL
