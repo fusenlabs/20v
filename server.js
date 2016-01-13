@@ -4,6 +4,7 @@ var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.config');
 
 new WebpackDevServer(webpack(config), {
+  contentBase: './public',
   publicPath: config.output.publicPath,
   hot: true,
   historyApiFallback: true
