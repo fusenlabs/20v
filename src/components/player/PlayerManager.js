@@ -114,7 +114,7 @@ class PlayerManager extends Component {
 
     _getLoadingComponent() {
         return (
-            <div className='AppLoading'><h1>loading...</h1></div>
+            <div className='AppLoading'></div>
         );
     }
 
