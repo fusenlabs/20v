@@ -3,20 +3,21 @@ import React, {Component} from 'react';
 let Footer = () => (
     <div className='footer'>
         <p className='left'>
-            Developed by &nbsp;
-            <a href='https://github.com/cosmitar' target='_blank'>
-                @cosmitar
-            </a> & &nbsp;
-            <a href='https://github.com/loverajoel' target='_blank'>
-                @loverajoel
+            Created by &nbsp;
+            <a href='#' target='_blank'>
+                Fūsenlabs
             </a>
-            &nbsp; / Designed by &nbsp;
-            <a href='https://dribbble.com/untallucas' target='_blank'>
-                @untallucas
+            &nbsp; / &nbsp;
+            <a href='https://twitter.com/20v' target='_blank'>
+                @twitter
             </a>
-            &nbsp; / Contribute in &nbsp;
+            &nbsp; / &nbsp;
+            <a href='https://facebook.com/20v' target='_blank'>
+                facebook
+            </a>
+            &nbsp; / &nbsp;
             <a href='https://github.com/hAPPckathon/20v'
-                target='_blank'>GitHub</a>
+                target='_blank'>&#9829; Open Source</a>
         </p>
     </div>
 );

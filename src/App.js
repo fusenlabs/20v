@@ -6,6 +6,7 @@ import ResultHeader from './components/results/ResultHeader';
 import ResultList from './components/results/ResultList';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
+import Share from './components/share';
 import AppLogo from './components/AppLogo';
 import {connect} from 'react-redux';
 import * as playerActions from './actions/player';
@@ -43,6 +44,7 @@ class App extends Component {
                         Create and enjoy a custom music channel based on a single song
                     </p>
                     <Search/>
+                    <Share/>
                 </div>
                 <Footer></Footer>
             </div>
