@@ -4,7 +4,7 @@ let Footer = () => (
     <div className='footer'>
         <p className='left'>
             Created by &nbsp;
-            <a href='#' target='_blank'>
+            <a href='http://www.fusenlabs.co' target='_blank'>
                 Fūsenlabs
             </a>
             &nbsp; / &nbsp;
@@ -16,7 +16,7 @@ let Footer = () => (
                 facebook
             </a>
             &nbsp; / &nbsp;
-            <a href='https://github.com/hAPPckathon/20v'
+            <a href='https://github.com/fusenlabs/20v'
                 target='_blank'>&#9829; Open Source</a>
         </p>
     </div>
