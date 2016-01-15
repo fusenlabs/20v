@@ -1,4 +1,4 @@
-import {ADD_SEARCH, RETURN_SEARCH, SEARCHING} from '../constants/search';
+import { ADD_SEARCH, RETURN_SEARCH, SEARCHING } from '../constants/search';
 
 const initialState = {
     searchText: 'demo',
@@ -12,7 +12,7 @@ export default function search(state = initialState, action) {
         case SEARCHING:
             return Object.assign({}, state, action);
         case RETURN_SEARCH:
-            return Object.assign({}, state, {resultList: action.tracks});
+            return Object.assign({}, state, { resultList: action.tracks });
         default:
             return state;
     }
