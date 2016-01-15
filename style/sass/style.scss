@@ -38,6 +38,7 @@ $color-two: #1BD27F;
 
 html {
 	overflow: hidden;
+	@include simple-gradient( -45deg, $color-one, $color-two );
 }
 
 body {
@@ -46,7 +47,6 @@ body {
 
 html,
 body {
-	@include simple-gradient( -45deg, $color-one, $color-two );
 	text-rendering: optimizeLegibility;
 	-webkit-text-size-adjust: 100%;
 	-webkit-font-smoothing: antialiased;
@@ -60,6 +60,12 @@ body {
 	line-height: 13px;
 	letter-spacing: -0.04em;
 	color: #FFFFFF;
+
+	@media (max-width: 740px) and (orientation: landscape){
+		overflow: visible;
+		height: auto;
+		min-height: 100%;
+	}
 }
 
 #appContainer {
@@ -76,6 +82,7 @@ body {
 	height: 100%;
 	width: 100%;
 	display: table;
+	position: relative;
 	
 	.home-body {
 		display: table-cell;
@@ -92,6 +99,11 @@ body {
 			@media (max-width: 600px){
 				width: 150px;
 				height: (150*70px)/170;
+			}
+
+			@media (max-width: 740px) and (orientation: landscape){
+				width: 100px;
+				height: (100*70px)/170;
 			}
 
 			@media (max-width: 400px){
@@ -121,6 +133,10 @@ body {
 				font-size: 22px;
 				line-height: 24px;
 			}
+		}
+
+		@media (max-width: 740px) and (orientation: landscape){
+			padding-top: 40px;
 		}
 
 		@media (max-width: 400px){

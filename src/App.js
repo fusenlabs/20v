@@ -37,6 +37,7 @@ class App extends Component {
     _getHomeLayout() {
         return (
             <div className='home-wrapper' key={this.props.view}>
+                <Footer></Footer>
                 <div className='home-body'>
                     <AppLogo/>
                     <p className='intro-text'>
@@ -44,7 +45,6 @@ class App extends Component {
                     </p>
                     <Search/>
                 </div>
-                <Footer></Footer>
             </div>
         );
     }

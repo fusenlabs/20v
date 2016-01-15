@@ -8,7 +8,6 @@
     font-size: 0;
     letter-spacing: 0;
     line-height: 0;
-    padding-top: 50px;
     padding-left: 15px;
     padding-right: 15px;
 
@@ -30,5 +29,9 @@
 			color: #FFFFFF;
 			text-decoration: underline;
 		}
+	}
+
+	@media (max-width: 740px) and (orientation: landscape){
+		position: fixed;
 	}
 }

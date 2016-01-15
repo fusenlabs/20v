@@ -166,6 +166,10 @@ iframe {
 			bottom: 0;
 		}
 
+		@media (max-width: 740px) and (orientation: landscape){
+			height: 80px;
+		}
+
 		@media (max-width: 400px){
 			height: 150px;
 		}
@@ -195,6 +199,13 @@ iframe {
 				margin-left: -1000px;
 			}
 
+			@media (max-width: 740px) and (orientation: landscape){
+				-webkit-animation: background-rotate-wide 10s infinite linear;
+				animation: background-rotate-wide 10s infinite linear;
+				margin-left: -900px;
+				height: 150%;
+			}
+
 			@media (max-width: 400px){
 				margin-left: -500px;
 			}			
@@ -217,6 +228,10 @@ iframe {
 				@media (max-width: 800px){
 					padding: 20px;
 				}
+				
+				@media (max-width: 740px) and (orientation: landscape){
+					padding: 5px 20px;
+				}
 			}
 
 			.bottom-row {
@@ -228,6 +243,10 @@ iframe {
 				@media (max-width: 800px){
 					width: 100%;
 					padding: 20px;
+				}
+
+				@media (max-width: 740px) and (orientation: landscape){
+					padding: 0 20px;
 				}
 
 				@media (max-width: 400px){
@@ -261,6 +280,12 @@ iframe {
 					padding-bottom: 40px;
 				}
 
+				@media (max-width: 740px) and (orientation: landscape){
+					font-size: 30px;
+					line-height: 30px;
+					padding-bottom: 0;
+				}
+
 				@media (max-width: 400px){
 					font-size: 30px;
 					line-height: 35px;
@@ -282,7 +307,11 @@ iframe {
 					@media (max-width: 800px){
 						height: 2px;
 					}
-				}
+
+					@media (max-width: 740px) and (orientation: landscape){
+						display: none;
+					}
+				}	
 			}
 
 			h2 {
@@ -311,6 +340,12 @@ iframe {
 					vertical-align: top;
 				}
 
+				@media (max-width: 740px) and (orientation: landscape){
+					font-size: 20px;
+					line-height: 22px;
+					vertical-align: top;
+				}
+
 				@media (max-width: 400px){
 					font-size: 20px;
 					line-height: 22px;
@@ -326,6 +361,10 @@ iframe {
 				@media (max-width: 800px){
 					margin-left: -100px;
 					top: -20px;
+				}
+
+				@media (max-width: 740px) and (orientation: landscape){
+					margin-left: -10px;
 				}
 
 				@media (max-width: 400px){
@@ -362,3 +401,4 @@ iframe {
 }
 
 @include rotate-keyframes-animation( 'background-rotate', -5deg, 5deg );
+@include rotate-keyframes-animation( 'background-rotate-wide', -2deg, 2deg );

@@ -351,7 +351,6 @@ hr {
   font-size: 0;
   letter-spacing: 0;
   line-height: 0;
-  padding-top: 50px;
   padding-left: 15px;
   padding-right: 15px; }
   .footer p {
@@ -370,6 +369,9 @@ hr {
     .footer p a {
       color: #FFFFFF;
       text-decoration: underline; }
+  @media (max-width: 740px) and (orientation: landscape) {
+    .footer {
+      position: fixed; } }
 
 .PlayerControls {
   position: absolute;
@@ -519,6 +521,9 @@ hr {
       height: 30%;
       top: auto;
       bottom: 0; } }
+  @media (max-width: 740px) and (orientation: landscape) {
+    .CGBand.skew {
+      height: 80px; } }
   @media (max-width: 400px) {
     .CGBand.skew {
       height: 150px; } }
@@ -555,6 +560,12 @@ hr {
         animation: background-rotate 20s infinite linear;
         margin-top: 0;
         margin-left: -1000px; } }
+    @media (max-width: 740px) and (orientation: landscape) {
+      .CGBand.skew .background {
+        -webkit-animation: background-rotate-wide 10s infinite linear;
+        animation: background-rotate-wide 10s infinite linear;
+        margin-left: -900px;
+        height: 150%; } }
     @media (max-width: 400px) {
       .CGBand.skew .background {
         margin-left: -500px; } }
@@ -573,6 +584,9 @@ hr {
       @media (max-width: 800px) {
         .CGBand.skew .content-wrapper .upper-row {
           padding: 20px; } }
+      @media (max-width: 740px) and (orientation: landscape) {
+        .CGBand.skew .content-wrapper .upper-row {
+          padding: 5px 20px; } }
     .CGBand.skew .content-wrapper .bottom-row {
       display: table;
       height: 50%;
@@ -582,6 +596,9 @@ hr {
         .CGBand.skew .content-wrapper .bottom-row {
           width: 100%;
           padding: 20px; } }
+      @media (max-width: 740px) and (orientation: landscape) {
+        .CGBand.skew .content-wrapper .bottom-row {
+          padding: 0 20px; } }
       @media (max-width: 400px) {
         .CGBand.skew .content-wrapper .bottom-row {
           padding: 0 20px; } }
@@ -623,6 +640,11 @@ hr {
           font-size: 60px;
           line-height: 45px;
           padding-bottom: 40px; } }
+      @media (max-width: 740px) and (orientation: landscape) {
+        .CGBand.skew .content-wrapper h1 {
+          font-size: 30px;
+          line-height: 30px;
+          padding-bottom: 0; } }
       @media (max-width: 400px) {
         .CGBand.skew .content-wrapper h1 {
           font-size: 30px;
@@ -650,6 +672,9 @@ hr {
         @media (max-width: 800px) {
           .CGBand.skew .content-wrapper h1:after {
             height: 2px; } }
+        @media (max-width: 740px) and (orientation: landscape) {
+          .CGBand.skew .content-wrapper h1:after {
+            display: none; } }
     .CGBand.skew .content-wrapper h2 {
       -webkit-transition: all 0.2s;
       -moz-transition: all ease-in-out 0.2s;
@@ -688,6 +713,11 @@ hr {
           font-size: 30px;
           line-height: 30px;
           vertical-align: top; } }
+      @media (max-width: 740px) and (orientation: landscape) {
+        .CGBand.skew .content-wrapper h2 {
+          font-size: 20px;
+          line-height: 22px;
+          vertical-align: top; } }
       @media (max-width: 400px) {
         .CGBand.skew .content-wrapper h2 {
           font-size: 20px;
@@ -699,6 +729,9 @@ hr {
       .CGBand.skew.in .background {
         margin-left: -100px;
         top: -20px; } }
+    @media (max-width: 740px) and (orientation: landscape) {
+      .CGBand.skew.in .background {
+        margin-left: -10px; } }
     @media (max-width: 400px) {
       .CGBand.skew.in .background {
         margin-left: -50px; } }
@@ -751,6 +784,24 @@ hr {
 
   100% {
     transform: rotate(-5deg); } }
+@-webkit-keyframes unquote('background-rotate-wide') {
+  0% {
+    -webkit-transform: rotate(-2deg); }
+
+  50% {
+    -webkit-transform: rotate(2deg); }
+
+  100% {
+    -webkit-transform: rotate(-2deg); } }
+@keyframes unquote('background-rotate-wide') {
+  0% {
+    transform: rotate(-2deg); }
+
+  50% {
+    transform: rotate(2deg); }
+
+  100% {
+    transform: rotate(-2deg); } }
 .results-list-header {
   padding: 10px 30px 60px; }
   .results-list-header .back-button {
@@ -1079,7 +1130,7 @@ hr {
     -ms-border-radius: 15px;
     -o-border-radius: 15px;
     border-radius: 15px;
-    margin: 10px 0 0 0;
+    margin: 10px 0 70px 0;
     padding: 0;
     list-style: none;
     z-index: 2;
@@ -1112,16 +1163,16 @@ hr {
   -webkit-appearance: none; }
 
 html {
-  overflow: hidden; }
+  overflow: hidden;
+  background: #3460f2;
+  background: -webkit-linear-gradient(-45deg, #3460f2, #1bd27f);
+  background: linear-gradient(-45deg, #3460f2, #1bd27f); }
 
 body {
   overflow: hidden; }
 
 html,
 body {
-  background: #3460f2;
-  background: -webkit-linear-gradient(-45deg, #3460f2, #1bd27f);
-  background: linear-gradient(-45deg, #3460f2, #1bd27f);
   text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -1135,6 +1186,12 @@ body {
   line-height: 13px;
   letter-spacing: -0.04em;
   color: #FFFFFF; }
+  @media (max-width: 740px) and (orientation: landscape) {
+    html,
+    body {
+      overflow: visible;
+      height: auto;
+      min-height: 100%; } }
 
 #appContainer {
   height: 100%; }
@@ -1144,7 +1201,8 @@ body {
 .home-wrapper {
   height: 100%;
   width: 100%;
-  display: table; }
+  display: table;
+  position: relative; }
   .home-wrapper .home-body {
     display: table-cell;
     vertical-align: middle;
@@ -1159,6 +1217,10 @@ body {
         .home-wrapper .home-body .intro-logo {
           width: 150px;
           height: 61.76471px; } }
+      @media (max-width: 740px) and (orientation: landscape) {
+        .home-wrapper .home-body .intro-logo {
+          width: 100px;
+          height: 41.17647px; } }
       @media (max-width: 400px) {
         .home-wrapper .home-body .intro-logo {
           width: 110px;
@@ -1182,6 +1244,9 @@ body {
           padding: 0 30px;
           font-size: 22px;
           line-height: 24px; } }
+    @media (max-width: 740px) and (orientation: landscape) {
+      .home-wrapper .home-body {
+        padding-top: 40px; } }
     @media (max-width: 400px) {
       .home-wrapper .home-body {
         padding-top: 40px; } }
