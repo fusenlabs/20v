@@ -28,6 +28,7 @@ $color-two: #1BD27F;
 @import '../src/components/player/Player';
 @import '../src/components/results/Results';
 @import '../src/components/search/Search';
+@import '../src/components/share/Index';
 
 
 // GENERAL
@@ -64,7 +65,7 @@ body {
 
 #appContainer {
 	height: 100%;
-	
+
 	.app-inner-wrapper {
 		height: 100%;
 	}
@@ -76,16 +77,16 @@ body {
 	height: 100%;
 	width: 100%;
 	display: table;
-	
+
 	.home-body {
 		display: table-cell;
 		vertical-align: middle;
 		text-align: center;
-		
+
 		.intro-logo {
 			margin-bottom: 30px;
 		}
-		
+
 		.intro-text {
 			font-size: 30px;
 			font-weight: 300;
@@ -144,7 +145,7 @@ body {
 	margin-top: -150px;
 	margin-left: -150px;
 	z-index: 4;
-	
+
 	@media (max-width: 400px){
 		width: 200px;
 		height: 200px;
