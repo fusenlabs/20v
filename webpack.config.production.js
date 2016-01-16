@@ -1,6 +1,7 @@
 /* eslint-disable no-var */
 var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/index',
@@ -24,6 +25,9 @@ module.exports = {
       compress: {
         warnings: false
       }
+    }),
+    new ExtractTextPlugin('style.css', {
+        allChunks: true
     })
   ],
   module: {
@@ -35,7 +39,10 @@ module.exports = {
       },
       {
           test: /\.scss$/,
-          loader: 'style!css!sass'
+          loader: ExtractTextPlugin.extract(
+              "style",
+              "css?minimize!sass"
+          )
       },
       {
           test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$/,

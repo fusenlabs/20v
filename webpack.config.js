@@ -1,6 +1,7 @@
 /* eslint-disable no-var */
 var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: [
@@ -19,7 +20,10 @@ module.exports = {
     devtool: 'eval-source-map',
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new ExtractTextPlugin('style.css', {
+            allChunks: true
+        })
     ],
     module: {
         loaders: [
@@ -32,7 +36,10 @@ module.exports = {
             //@see http://stackoverflow.com/questions/26851120/how-can-i-setup-webpack-to-minify-and-combine-scss-and-javascript-like-codekit
             {
                 test: /\.scss$/,
-                loader: 'style!css!sass'
+                loader: ExtractTextPlugin.extract(
+                    "style",
+                    "css?minimize!sass"
+                )
             },
             {
                 test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$/,
