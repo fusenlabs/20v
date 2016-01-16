@@ -39,13 +39,13 @@ class App extends Component {
         return (
             <div className='home-wrapper' key={this.props.view}>
                 <Footer/>
+                <Share/>
                 <div className='home-body'>
-                    <img src="/images/logo.svg"/>
+                    <img src="/images/logo.svg" className="intro-logo"/>
                     <p className="intro-text">
                         Create and enjoy a custom music channel based on a single song
                     </p>
                     <Search/>
-                    <Share/>
                 </div>
             </div>
         );
