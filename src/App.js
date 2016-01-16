@@ -7,7 +7,6 @@ import ResultList from './components/Results/ResultList';// eslint-disable-line 
 import Footer from './components/Footer';// eslint-disable-line no-unused-vars
 import Header from './components/Header';// eslint-disable-line no-unused-vars
 import Share from './components/Share';// eslint-disable-line no-unused-vars
-import AppLogo from './components/AppLogo';// eslint-disable-line no-unused-vars
 import { connect } from 'react-redux';
 import * as playerActions from './actions/player';
 import * as appActions from './actions/app';
@@ -43,7 +42,7 @@ class App extends Component {
             <div className='home-wrapper' key={this.props.view}>
                 <Footer/>
                 <div className='home-body'>
-                    <AppLogo/>
+                    <img src="images/logo.svg"/>
                     <p className="intro-text">
                         Create and enjoy a custom music channel based on a single song
                     </p>
