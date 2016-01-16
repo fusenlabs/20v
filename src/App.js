@@ -2,12 +2,9 @@ import React, { Component } from 'react';// eslint-disable-line no-unused-vars
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';// eslint-disable-line no-unused-vars
 import PlayerManager from './components/PlayerManager';// eslint-disable-line no-unused-vars
 import Search from './components/Search';// eslint-disable-line no-unused-vars
-import ResultHeader from './components/Results/ResultHeader';// eslint-disable-line no-unused-vars
-import ResultList from './components/Results/ResultList';// eslint-disable-line no-unused-vars
 import Footer from './components/Footer';// eslint-disable-line no-unused-vars
 import Header from './components/Header';// eslint-disable-line no-unused-vars
 import Share from './components/Share';// eslint-disable-line no-unused-vars
-import AppLogo from './components/AppLogo';// eslint-disable-line no-unused-vars
 import { connect } from 'react-redux';
 import * as playerActions from './actions/player';
 import * as appActions from './actions/app';
@@ -43,7 +40,7 @@ class App extends Component {
             <div className='home-wrapper' key={this.props.view}>
                 <Footer/>
                 <div className='home-body'>
-                    <AppLogo/>
+                    <img src="/images/logo.svg"/>
                     <p className="intro-text">
                         Create and enjoy a custom music channel based on a single song
                     </p>
