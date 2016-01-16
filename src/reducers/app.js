@@ -1,4 +1,4 @@
-import {CHANGE_APP_VIEW,VIEWS} from '../constants/app';
+import { CHANGE_APP_VIEW, VIEWS } from '../constants/app';
 
 const initialState = {
     view: VIEWS.HOME

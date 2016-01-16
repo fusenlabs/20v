@@ -1,12 +1,12 @@
 'use strict';
-import React, {Component} from 'react';
+import React, { Component } from 'react';// eslint-disable-line no-unused-vars
 
 let DEFAULT_ARTIST_NAME = 'Now Playing';
 
 class CGBand extends Component {
     constructor(...props) {
         super(...props);
-        this._timeoutId;
+        this._timeoutId = null;
         this.state = {
             show: false,
             videoTitle: null
@@ -27,11 +27,11 @@ class CGBand extends Component {
         return (
             <div className={CGClass}>
                 <div className={BGRandomGradient}></div>
-                <div className='content-wrapper'>
-                    <div className='upper-row'>
+                <div className="content-wrapper">
+                    <div className="upper-row">
                     <h1>{artistName}</h1>
                 </div>
-                    <div className='bottom-row'>
+                    <div className="bottom-row">
                         <h2>{songTitle}</h2>
                     </div>
                 </div>

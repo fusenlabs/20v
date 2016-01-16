@@ -11,6 +11,7 @@
     "plugins": [
         "react"
     ],
+    "extends": "rackt",
     "parser": "babel-eslint",
     "rules": {
         // Possible Errors

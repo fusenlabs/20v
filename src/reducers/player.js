@@ -1,4 +1,4 @@
-import {CHANGE_PLAYER_STATUS} from '../constants/player';
+import { CHANGE_PLAYER_STATUS } from '../constants/player';
 
 const initialState = {
     isOpen: false
