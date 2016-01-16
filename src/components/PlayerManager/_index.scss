@@ -1,4 +1,4 @@
-// 20V - PLAYER
+/* 20V - PLAYER */
 
 iframe {
 }
@@ -148,10 +148,10 @@ iframe {
 }
 
 
-// VIDEO INFORMATION
+/* VIDEO INFORMATION */
 .CGBand {
 
-	// SKEW
+	/* SKEW */
 	&.skew {
 		width: 33%;
 		width: 600px;
@@ -255,7 +255,7 @@ iframe {
 			}
 			
 			h1 {
-				// OUT ANIMATION
+				/* OUT ANIMATION */
 				@include transition( 0.2s, all, ease-in-out );
 				@include transition-delay( 0 );
 				@include backface-visibility-fix();
@@ -315,7 +315,7 @@ iframe {
 			}
 
 			h2 {
-				// OUT ANIMATION
+				/* OUT ANIMATION */
 				@include transition( 0.2s, all, ease-in-out );
 				@include transition-delay( 0 );
 				@include backface-visibility-fix();
@@ -376,7 +376,7 @@ iframe {
 
 				.upper-row {
 					h1 {
-						// IN ANIMATION
+						/* IN ANIMATION */
 						@include transition( 1s, all, ease-in-out );
 						@include transform-3d( 1000px, '0, 0, 0' );
 						@include transition-delay( 0.5s );
@@ -389,7 +389,7 @@ iframe {
 
 				.bottom-row {
 					h2 {
-						// IN ANIMATION
+						/* IN ANIMATION */
 						@include transition( 1s, all, ease-in-out );
 						@include transform-3d( 1000px, '0, 0, 0' );
 						@include transition-delay( 1s );
