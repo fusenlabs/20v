@@ -19,13 +19,13 @@ class Share extends Component {
 
     _fb() {
         return (<a href="#" onClick={this._shareFB}>
-                    <img src="facebook.svg"/>
+                    <img src="/images/facebook.svg"/>
                 </a>);
     }
 
     _tw() {
         return (<a href="#" onClick={this._shareTW}>
-                    <img src="twitter.svg"/>
+                    <img src="/images/twitter.svg"/>
                 </a>);
     }
 
