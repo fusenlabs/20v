@@ -802,273 +802,6 @@ hr {
 
   100% {
     transform: rotate(-2deg); } }
-.results-list-header {
-  padding: 10px 30px 60px; }
-  .results-list-header .back-button {
-    width: 20px;
-    height: 30px;
-    display: inline-block;
-    vertical-align: top;
-    margin-right: 20px; }
-    .results-list-header .back-button svg * {
-      fill: #FFFFFF; }
-  .results-list-header .header-logo {
-    width: 73px;
-    height: 30px;
-    display: inline-block;
-    vertical-align: top; }
-
-.results-list {
-  position: relative;
-  width: 75%; }
-  .results-list .main-result {
-    position: relative;
-    width: 50%; }
-    .results-list .main-result .track-number {
-      -webkit-transition: all 0.2s;
-      -moz-transition: all ease-in-out 0.2s;
-      -ms-transition: all ease-in-out 0.2s;
-      -o-transition: all ease-in-out 0.2s;
-      transition: all ease-in-out 0.2s;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      -ms-border-radius: 50%;
-      -o-border-radius: 50%;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 30px;
-      font-family: "Passion One";
-      font-size: 40px;
-      font-weight: 700;
-      line-height: 56px;
-      text-align: center;
-      color: #1bd27f;
-      border: 2px solid #FFFFFF;
-      background-color: #FFFFFF;
-      margin-left: -10px; }
-    .results-list .main-result .track-play-icon {
-      -webkit-transition: all 0.4s;
-      -moz-transition: all ease-out 0.4s;
-      -ms-transition: all ease-out 0.4s;
-      -o-transition: all ease-out 0.4s;
-      transition: all ease-out 0.4s;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      -ms-border-radius: 50%;
-      -o-border-radius: 50%;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      position: absolute;
-      top: 0;
-      left: 20px;
-      opacity: 0; }
-      .results-list .main-result .track-play-icon svg {
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -ms-border-radius: 50%;
-        -o-border-radius: 50%;
-        border-radius: 50%;
-        overflow: hidden;
-        width: 60px;
-        height: 60px; }
-        .results-list .main-result .track-play-icon svg * {
-          -webkit-transition: all 0.4s;
-          -moz-transition: all ease-out 0.4s;
-          -ms-transition: all ease-out 0.4s;
-          -o-transition: all ease-out 0.4s;
-          transition: all ease-out 0.4s;
-          -webkit-transform: translate(-40px, 0);
-          transform: translate(-40px, 0); }
-    .results-list .main-result .track-name {
-      font-family: "Passion One";
-      font-size: 40px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 25px;
-      text-transform: uppercase;
-      display: block;
-      padding-left: 100px;
-      margin: 0;
-      padding-top: 7px; }
-    .results-list .main-result .track-artist {
-      font-size: 25px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      line-height: 28px;
-      display: block;
-      padding-left: 100px;
-      margin: 0;
-      text-transform: uppercase; }
-    .results-list .main-result:hover .track-number {
-      border: 2px solid #FFFFFF;
-      background-color: transparent;
-      color: rgba(27, 210, 127, 0); }
-    .results-list .main-result:hover .track-play-icon {
-      opacity: 1; }
-      .results-list .main-result:hover .track-play-icon svg * {
-        -webkit-transform: translate(0, 0);
-        transform: translate(0, 0); }
-  .results-list .playlist-trigger {
-    -webkit-transition: all 0.5s;
-    -moz-transition: all ease-in-out 0.5s;
-    -ms-transition: all ease-in-out 0.5s;
-    -o-transition: all ease-in-out 0.5s;
-    transition: all ease-in-out 0.5s;
-    border: none;
-    background-color: #FFFFFF;
-    position: absolute;
-    left: 50%;
-    top: 0;
-    font-family: "Open Sans";
-    font-weight: 700;
-    font-size: 20px;
-    text-transform: uppercase;
-    letter-spacing: -0.03em;
-    line-height: 20px;
-    padding: 0 24px;
-    color: #1bd27f;
-    height: 40px;
-    box-shadow: 2px 2px rgba(0, 0, 0, 0.2); }
-    .results-list .playlist-trigger:before {
-      content: '';
-      border: 42px solid transparent;
-      border-top-color: rgba(0, 0, 0, 0.2);
-      border-left-width: 0;
-      width: 0;
-      height: 0;
-      position: absolute;
-      top: 0;
-      right: -44px; }
-    .results-list .playlist-trigger:after {
-      content: '';
-      border: 40px solid transparent;
-      border-top-color: #FFFFFF;
-      border-left-width: 0;
-      width: 0;
-      height: 0;
-      position: absolute;
-      top: 0;
-      right: -40px; }
-    .results-list .playlist-trigger:hover {
-      color: #3460f2; }
-  .results-list ul {
-    list-style: none;
-    list-style-position: inside;
-    padding: 30px 30px 0 0;
-    margin: 30px 0 0 30px;
-    width: 100%;
-    border-top: 1px solid rgba(255, 255, 255, 0.5);
-    padding-bottom: 150px;
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    column-count: 2; }
-    .results-list ul .single-track {
-      -webkit-transition: all 0.5s;
-      -moz-transition: all ease-in-out 0.5s;
-      -ms-transition: all ease-in-out 0.5s;
-      -o-transition: all ease-in-out 0.5s;
-      transition: all ease-in-out 0.5s;
-      list-style: none;
-      list-style-position: inside;
-      padding: 0;
-      margin: 0 0 20px;
-      position: relative;
-      white-space: nowrap;
-      cursor: pointer; }
-      .results-list ul .single-track .track-number {
-        -webkit-transition: all 0.2s;
-        -moz-transition: all ease-in-out 0.2s;
-        -ms-transition: all ease-in-out 0.2s;
-        -o-transition: all ease-in-out 0.2s;
-        transition: all ease-in-out 0.2s;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -ms-border-radius: 50%;
-        -o-border-radius: 50%;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        font-size: 20px;
-        font-weight: 300;
-        line-height: 36px;
-        letter-spacing: -0.1em;
-        text-align: center;
-        color: #1bd27f;
-        border: 2px solid #FFFFFF;
-        background-color: #FFFFFF; }
-      .results-list ul .single-track .track-play-icon {
-        -webkit-transition: all 0.4s;
-        -moz-transition: all ease-out 0.4s;
-        -ms-transition: all ease-out 0.4s;
-        -o-transition: all ease-out 0.4s;
-        transition: all ease-out 0.4s;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -ms-border-radius: 50%;
-        -o-border-radius: 50%;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0; }
-        .results-list ul .single-track .track-play-icon svg {
-          -webkit-border-radius: 50%;
-          -moz-border-radius: 50%;
-          -ms-border-radius: 50%;
-          -o-border-radius: 50%;
-          border-radius: 50%;
-          overflow: hidden; }
-          .results-list ul .single-track .track-play-icon svg * {
-            -webkit-transition: all 0.4s;
-            -moz-transition: all ease-out 0.4s;
-            -ms-transition: all ease-out 0.4s;
-            -o-transition: all ease-out 0.4s;
-            transition: all ease-out 0.4s;
-            -webkit-transform: translate(-40px, 0);
-            transform: translate(-40px, 0); }
-      .results-list ul .single-track .track-name {
-        font-size: 18px;
-        font-weight: 700;
-        letter-spacing: -0.03em;
-        line-height: 18px;
-        text-transform: uppercase;
-        padding: 2px 0 2px 55px;
-        display: block;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding-right: 5px;
-        margin: 0; }
-      .results-list ul .single-track .track-artist {
-        font-size: 14px;
-        font-weight: 400;
-        letter-spacing: -0.02em;
-        line-height: 16px;
-        display: block;
-        opacity: 0.6;
-        padding-left: 55px;
-        margin: 0; }
-      .results-list ul .single-track:hover .track-number {
-        border: 2px solid #FFFFFF;
-        background-color: transparent;
-        color: rgba(27, 210, 127, 0); }
-      .results-list ul .single-track:hover .track-play-icon {
-        opacity: 1; }
-        .results-list ul .single-track:hover .track-play-icon svg * {
-          -webkit-transform: translate(0, 0);
-          transform: translate(0, 0); }
-
 .search-wrapper {
   width: 500px;
   position: relative;
@@ -1092,8 +825,7 @@ hr {
     font-size: 17px;
     font-weight: 400;
     line-height: 50px;
-    color: #3460f2;
-    cursor: pointer; }
+    color: #3460f2; }
     .search-wrapper input::-webkit-input-placeholder {
       color: #3460f2; }
     .search-wrapper input:-moz-placeholder {
@@ -1125,7 +857,6 @@ hr {
   .search-wrapper .hide {
     display: none; }
   .search-wrapper .react-autosuggest__suggestions {
-<<<<<<< HEAD:style/style.css
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     -ms-border-radius: 15px;
@@ -1157,21 +888,43 @@ hr {
       height: 300px; } }
   @media (max-width: 400px) {
     .search-wrapper {
-      padding: 0 10px;
-    width: 100%;
-    margin: 10px 0 0 0;
-    padding: 0px;
-    list-style: none;
-    position: absolute;
-    z-index: 2; }
-  .search-wrapper .react-autosuggest__suggestion {
-    color: #3460F2;
-    padding: 15px;
-    background: #fff;
-    cursor: pointer; }
-  .search-wrapper .react-autosuggest__suggestion--focused {
-    background: #3460F2;
-    color: #fff; }
+      padding: 0 10px; } }
+
+.share-wrapper {
+  width: 100%;
+  margin: 100px auto 0;
+  position: absolute;
+  bottom: 100px;
+  text-align: center; }
+  .share-wrapper span {
+    clear: both;
+    margin: 0 auto;
+    display: block;
+    text-transform: uppercase; }
+  .share-wrapper a {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all ease-in-out 0.5s;
+    -ms-transition: all ease-in-out 0.5s;
+    -o-transition: all ease-in-out 0.5s;
+    transition: all ease-in-out 0.5s;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding-top: 10px;
+    margin: 5px 3px 0; }
+    .share-wrapper a img {
+      display: inline-block;
+      width: 20px;
+      height: 20px; }
+    .share-wrapper a:hover {
+      background-color: #FFFFFF; }
 
 * {
   outline: none;
