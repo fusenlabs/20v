@@ -46,7 +46,7 @@ class Search extends Component {
             type: 'text',
             ref: 'searchInput',
             className: 'input-search',
-            placeholder: 'Just type a song name and press Enter'
+            placeholder: 'Type a song name and select an option'
         };
         return (
             <div className={'search-wrapper' + (this.props.isSearching ? 'search-mask' : '') }>

@@ -40,8 +40,9 @@ class App extends Component {
 
     _getHomeLayout() {
         return (
-            <div className="home-wrapper" key={this.props.view}>
-                <div className="home-body">
+            <div className='home-wrapper' key={this.props.view}>
+                <Footer/>
+                <div className='home-body'>
                     <AppLogo/>
                     <p className="intro-text">
                         Create and enjoy a custom music channel based on a single song
@@ -49,7 +50,6 @@ class App extends Component {
                     <Search/>
                     <Share/>
                 </div>
-                <Footer/>
             </div>
         );
     }

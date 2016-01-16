@@ -38,6 +38,16 @@
 		&:-ms-input-placeholder {
 			color: $color-one;
 		}
+
+		@media (max-width: 600px){
+			padding: 0 10px;
+		}
+
+		@media (max-width: 400px){
+			height: 40px;
+			line-height: 40px;
+			font-size: 13px;
+		}
 	}
 
 	.search-icon {
@@ -48,30 +58,55 @@
 		* {
 			fill: $color-one;
 		}
+
+		@media (max-width: 600px){
+			right: 68px;
+		}
+
+		@media (max-width: 500px){
+			display: none;
+		}
 	}
 
 	.hide {
 		display: none;
 	}
 
-    .react-autosuggest__suggestions {
-        width: 100%;
-        margin: 10px 0 0 0;
-        padding: 0px;
-        list-style: none;
-        position: absolute;
-        z-index: 2
-    }
+	.react-autosuggest__suggestions {
+		@include border-radius(15px);
+		margin: 10px 0 70px 0;
+		padding: 0;
+		list-style: none;
+		z-index: 2;
+		background-color: #FFFFFF;
+		overflow: hidden;
+		
+		@media (max-width: 600px){
+			width: 100%;
+			padding: 0;
+		} 
+	}
 
     .react-autosuggest__suggestion {
-        color: #3460F2;
-        padding: 15px;
-        background: #fff;
+        color: $color-one;
+        border-bottom: 1px solid transparentize( $color-one, 0.8 );
+        padding: 15px 0;
         cursor: pointer;
+        text-transform: uppercase;
     }
 
     .react-autosuggest__suggestion--focused {
-        background: #3460F2;
-        color: #fff;
+        background-color: $color-one;
+        color: #FFFFFF;
     }
+
+	@media (max-width: 600px){
+		width: 100%;
+		padding: 0 20px;
+		height: 300px;
+	}
+
+	@media (max-width: 400px){
+		padding: 0 10px;
+	}
 }
