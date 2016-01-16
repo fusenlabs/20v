@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react';// eslint-disable-line no-unused-vars
 import ReactDom from 'react-dom';
-import { Provider } from 'react-redux';
-import App from './App';
+import { Provider } from 'react-redux';// eslint-disable-line no-unused-vars
+import App from './App';// eslint-disable-line no-unused-vars
 import configureStore from './store/StoreManager';
 
-require('./../style/sass/style.scss');
+require('./../sass/style.scss');
 
 let store = configureStore();
 

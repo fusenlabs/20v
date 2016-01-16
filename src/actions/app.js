@@ -1,6 +1,6 @@
-import {CHANGE_APP_VIEW,VIEWS} from '../constants/app';
+import { CHANGE_APP_VIEW, VIEWS } from '../constants/app';
 
-export function changeAppView(view='') {
+export function changeAppView(view = '') {
     return {
         type: CHANGE_APP_VIEW,
         view: view

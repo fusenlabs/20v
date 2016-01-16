@@ -2,7 +2,7 @@
 An app to enjoy a music channel with your favorite videos
 
 ## Devel
-Site structure based in components
+Site structure based on components
 
 Home: 
 ````
@@ -22,7 +22,11 @@ Results:
 ````
 Player:
 ````
-<PlayerManager></PlayerManager>
+<PlayerManager>
+  <YouTubePlayer></YouTubePlayer>
+  <CGBand></CGBand>
+  <PlayerControls></PlayerControls>
+</PlayerManager>
 ````
 ````
 git clone https://github.com/hAPPckathon/20v.git

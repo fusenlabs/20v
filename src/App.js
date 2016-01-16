@@ -1,34 +1,38 @@
-import React, {Component} from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import PlayerManager from './components/player/PlayerManager';
-import Search from './components/search/Search';
-import ResultHeader from './components/results/ResultHeader';
-import ResultList from './components/results/ResultList';
-import Footer from './components/footer/Footer';
-import Header from './components/header/Header';
-import AppLogo from './components/AppLogo';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';// eslint-disable-line no-unused-vars
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';// eslint-disable-line no-unused-vars
+import PlayerManager from './components/PlayerManager';// eslint-disable-line no-unused-vars
+import Search from './components/Search';// eslint-disable-line no-unused-vars
+import ResultHeader from './components/Results/ResultHeader';// eslint-disable-line no-unused-vars
+import ResultList from './components/Results/ResultList';// eslint-disable-line no-unused-vars
+import Footer from './components/Footer';// eslint-disable-line no-unused-vars
+import Header from './components/Header';// eslint-disable-line no-unused-vars
+import Share from './components/Share';// eslint-disable-line no-unused-vars
+import AppLogo from './components/AppLogo';// eslint-disable-line no-unused-vars
+import { connect } from 'react-redux';
 import * as playerActions from './actions/player';
 import * as appActions from './actions/app';
-import {VIEWS} from './constants/app';
+import { VIEWS } from './constants/app';
 
 class App extends Component {
     constructor(props) {
         super(props);
+        this._handleStopPlaying = this._handleStopPlaying.bind(this);
+        this._getFormattedList = this._getFormattedList.bind(this);
     }
+
     render() {
         return (
-            <div className='app-inner-wrapper'>
+            <div className="app-inner-wrapper">
                 <ReactCSSTransitionGroup
-                    transitionName='screen-fade'
-                    transitionAppear={true}
+                    transitionName="screen-fade"
+                    transitionAppear
                     transitionAppearTimeout={500}
                     transitionEnterTimeout={500}
                     transitionLeaveTimeout={300}
                 >
-                    { this.props.view == VIEWS.HOME ? this._getHomeLayout() : null }
-                    { this.props.view == VIEWS.RESULTS ? this._getResultsLayout() : null }
-                    { this.props.view == VIEWS.PLAYER ? this._getPlayerLayout() : null }
+                    { this.props.view === VIEWS.HOME ? this._getHomeLayout() : null }
+                    { this.props.view === VIEWS.RESULTS ? this._getResultsLayout() : null }
+                    { this.props.view === VIEWS.PLAYER ? this._getPlayerLayout() : null }
                 </ReactCSSTransitionGroup>
             </div>
         );
@@ -37,13 +41,14 @@ class App extends Component {
     _getHomeLayout() {
         return (
             <div className='home-wrapper' key={this.props.view}>
-                <Footer></Footer>
+                <Footer/>
                 <div className='home-body'>
                     <AppLogo/>
-                    <p className='intro-text'>
+                    <p className="intro-text">
                         Create and enjoy a custom music channel based on a single song
                     </p>
                     <Search/>
+                    <Share/>
                 </div>
             </div>
         );
@@ -51,7 +56,7 @@ class App extends Component {
 
     _getResultsLayout() {
         return (
-            <div className='results-wrapper' key={this.props.view}>
+            <div className="results-wrapper" key={this.props.view}>
                 <Header/>
                 <ResultHeader/>
                 <ResultList/>
@@ -62,11 +67,11 @@ class App extends Component {
 
     _getPlayerLayout() {
         return (
-            <div className='player-wrapper' key={this.props.view}>
+            <div className="player-wrapper" key={this.props.view}>
                 <PlayerManager
-                    onClose={this._handleStopPlaying.bind(this)}
-                    playlist={this._getFormattedList.bind(this)(this.props.resultList)}>
-                </PlayerManager>
+                    onClose={this._handleStopPlaying}
+                    playlist={this._getFormattedList(this.props.resultList)}
+                />
             </div>
         );
     }
@@ -86,7 +91,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-    const {app,search,player} = state;
+    const { app, search, player } = state;
     return {
         searchText: search.searchText,
         resultList: search.resultList,
