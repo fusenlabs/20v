@@ -61,7 +61,7 @@ class Search extends Component {
                     cache
                     ref="searchbox"
                 />
-                <img src="image/search.svg"/>
+                <img src="images/search.svg" className="search-icon" />
                 <span className="hide">{this.props.searchText}</span>
             </div>
         );
