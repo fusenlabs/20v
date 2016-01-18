@@ -27,7 +27,7 @@ class Player extends Component {
         };
         return (
             <Youtube
-                url={`http://www.youtube.com/watch?v=${firstVideoId}`}
+                url={`https://www.youtube.com/watch?v=${firstVideoId}`}
                 opts={opts}
                 {...other}
             />
