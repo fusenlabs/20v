@@ -4,10 +4,11 @@ import Player from './Player';// eslint-disable-line no-unused-vars
 import CGBand from './CGBand';// eslint-disable-line no-unused-vars
 import PlayerControls from './PlayerControls';// eslint-disable-line no-unused-vars
 import { Config, Video } from 'youtube-client-wrapper';// eslint-disable-line no-unused-vars
+import { YT_API_CLIENT } from 'appConfig';
 
 let bootYoutubeClient = () => {
     return Config.set({
-        apiKey: 'AIzaSyB8_0tIV6QuSA5Qb1zx3kXW8UAB-cATQXU'
+        apiKey: YT_API_CLIENT
     })
     .boot();
 };
