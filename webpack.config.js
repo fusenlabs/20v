@@ -15,6 +15,10 @@ module.exports = {
         publicPath: '/static/'
     },
     resolve: {
+        root: path.resolve(__dirname),
+        alias: {
+            'appConfig': 'src/devel-config.js'
+        },
         extensions: ['', '.js']
     },
     devtool: 'eval-source-map',

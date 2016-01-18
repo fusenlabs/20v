@@ -4,13 +4,17 @@ var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './src/index',
+  entry: ['./src/index','./src/prod-keys'],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
   resolve: {
+    root: path.resolve(__dirname),
+    alias: {
+        'appConfig': 'src/prod-config.js'
+    },
     extensions: ['', '.js']
   },
   devtool: 'source-map',

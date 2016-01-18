@@ -3,3 +3,4 @@ node_modules
 *.sublime-*
 page
 dist
+src/prod-config.js
