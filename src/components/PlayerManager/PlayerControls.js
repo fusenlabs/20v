@@ -128,4 +128,47 @@ PlayerControls.defaultProps = {
     onClose: ()=> {}
 };
 
-export default PlayerControls;
+class IphoneControls extends Component {
+    constructor(props) {
+        super(props);
+        this._handleClose = this._handleClose.bind(this);
+        this._handleSkip = this._handleSkip.bind(this);
+    }
+
+    render() {
+        return (
+            <div className="PlayerControls-iphone">
+                <div className="video-close">
+                    <a href="#" onClick={this._handleClose}>
+                        &times;
+                    </a>
+                </div>
+
+                <div className="video-next">
+                    <a href="#" onClick={this._handleSkip}>
+                        NEXT VIDEO <i className="fa fa-step-forward"></i>
+                    </a>
+                </div>
+            </div>
+        );
+    }
+
+    _handleSkip(event) {
+        event.preventDefault();
+        this.props.onSkip(this);
+        ga('send', 'event', 'click', 'player', 'skip');// eslint-disable-line no-undef
+    }
+
+    _handleClose(event) {
+        event.preventDefault();
+        this.props.onClose(this);
+        ga('send', 'event', 'click', 'player', 'close');// eslint-disable-line no-undef
+    }
+}
+
+IphoneControls.defaultProps = {
+    onSkip: ()=> {},
+    onClose: ()=> {}
+};
+
+export { PlayerControls as default, IphoneControls };

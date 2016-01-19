@@ -9,6 +9,14 @@ iframe {
     }
 }
 
+.PlayerControls-iphone {
+	position: absolute;
+	width: 100%;
+	z-index: 10;
+	left: 0;
+	top: 0;
+}
+
 .PlayerControls {
 	position: absolute;
 	width: 100%;
