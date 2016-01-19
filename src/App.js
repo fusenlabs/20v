@@ -8,18 +8,19 @@ import Share from './components/Share';// eslint-disable-line no-unused-vars
 import { connect } from 'react-redux';
 import * as playerActions from './actions/player';
 import * as appActions from './actions/app';
-import { VIEWS } from './constants/app';
+import { VIEWS, IOSDETECT } from './constants/app';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this._handleStopPlaying = this._handleStopPlaying.bind(this);
         this._getFormattedList = this._getFormattedList.bind(this);
+        this._iosDetect = IOSDETECT;
     }
 
     render() {
         return (
-            <div className="app-inner-wrapper">
+            <div className={`app-inner-wrapper ${ this._iosDetect}`}>
                 <ReactCSSTransitionGroup
                     transitionName="screen-fade"
                     transitionAppear

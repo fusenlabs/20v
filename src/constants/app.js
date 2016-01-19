@@ -4,3 +4,4 @@ export const VIEWS = {
     RESULTS: 'results',
     PLAYER: 'player'
 };
+export const IOSDETECT = navigator.userAgent.indexOf('iPhone') > -1 ? 'iphone' : '';
