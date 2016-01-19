@@ -5,6 +5,7 @@ import CGBand from './CGBand';// eslint-disable-line no-unused-vars
 import PlayerControls from './PlayerControls';// eslint-disable-line no-unused-vars
 import { Config, Video } from 'youtube-client-wrapper';// eslint-disable-line no-unused-vars
 import { YT_API_CLIENT } from 'appConfig';
+import { IOSDETECT } from './../../constants/app';
 
 let bootYoutubeClient = () => {
     return Config.set({
@@ -41,6 +42,7 @@ class PlayerManager extends Component {
         this._isLazy = false;
         this._currentVideoOnPlayer = null;
         this._onScreenTimeoutIds = [];
+        this._isIOS = IOSDETECT;
         /* custom youtube player controls*/
         this._playerControls = null;
 
@@ -96,8 +98,20 @@ class PlayerManager extends Component {
 
     _collectVideosId() {
         if (!externalList.length) {
-            // inject playlist into player
-            this._lazyLoad(Array.from(videos.keys()));
+            if (this._isIOS) {
+                // starts with full playlist loaded
+                let list = Array.from(videos.keys());
+                let firstId = list[0];
+                this.setState({
+                    loading: false,
+                    playlist: list,
+                    showCGBand: false,
+                    currentVideoTitle: videos.get(firstId).title
+                });
+            } else {
+                // inject playlist into player for lazy loading
+                this._lazyLoad(Array.from(videos.keys()));
+            }
         } else {
             let videoTitle = externalList.shift();
             let config = { order: 'viewCount' };
@@ -110,8 +124,9 @@ class PlayerManager extends Component {
                     }*/
                     videos.set(element.id, element);
                 }
-                if (videos.size === 1) {
-                    // start with first collected video
+
+                if (videos.size === 1 && !this._isIOS) {
+                    // start with first collected video. Others are lazy loaded.
                     let firstId = Array.from(videos.keys())[0];
                     this.setState({
                         loading: false,
@@ -120,6 +135,7 @@ class PlayerManager extends Component {
                         currentVideoTitle: videos.get(firstId).title
                     });
                 }
+
                 this._collectVideosId();
             });
         }
