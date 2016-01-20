@@ -31,6 +31,7 @@ class PlayerManager extends Component {
         this._onCPSkipHandler = this._onCPSkipHandler.bind(this);
         this._onCPCloseHandler = this._onCPCloseHandler.bind(this);
         this._onIphoneCPSkipHandler = this._onIphoneCPSkipHandler.bind(this);
+        this.close = this.close.bind(this);
         /* boot first, then start to process*/
         bootYoutubeClient()
             .then(() => {
