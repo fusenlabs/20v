@@ -15,25 +15,42 @@ iframe {
 	z-index: 10;
 	left: 0;
 	top: 0;
-	background-color: #000;
 	height: 35px;
 	padding: 10px;
+	@include simple-gradient( -45deg, $color-one, $color-two );
+
 	.video-close {
 		float: left;
 		font-size: 30px;
+		
+		a {
+			color: #FFFFFF;
+		}
 	}
+
 	.video-next {
 		float: right;
+
+		a {
+			color: #FFFFFF;
+			text-decoration: none;
+			
+			i {
+				padding-left: 5px;
+			}
+		}
 	}
+
 	.iphone-disclaimer {
 		width: 100%;
 		position: absolute;
 		top: 35px;
 		left: 0;
 		text-align: center;
-		background-color: #f0ad4e;
-		color: #333;
-		padding: 3px;
+		background-color: transparentize( #000000, 0.4 );
+		color: #FFFFFF;
+		padding: 10px 50px;
+		font-size: 13px;
 	}
 }
 
