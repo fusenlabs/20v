@@ -3,6 +3,57 @@
 iframe {
 }
 
+.iphone {
+    .custom-player-controls-wrapper {
+        display: none
+    }
+}
+
+.PlayerControls-iphone {
+	position: absolute;
+	width: 100%;
+	z-index: 10;
+	left: 0;
+	top: 0;
+	height: 35px;
+	padding: 10px;
+	@include simple-gradient( -45deg, $color-one, $color-two );
+
+	.video-close {
+		float: left;
+		font-size: 30px;
+		
+		a {
+			color: #FFFFFF;
+		}
+	}
+
+	.video-next {
+		float: right;
+
+		a {
+			color: #FFFFFF;
+			text-decoration: none;
+			
+			i {
+				padding-left: 5px;
+			}
+		}
+	}
+
+	.iphone-disclaimer {
+		width: 100%;
+		position: absolute;
+		top: 35px;
+		left: 0;
+		text-align: center;
+		background-color: transparentize( #000000, 0.4 );
+		color: #FFFFFF;
+		padding: 10px 50px;
+		font-size: 13px;
+	}
+}
+
 .PlayerControls {
 	position: absolute;
 	width: 100%;
@@ -30,7 +81,7 @@ iframe {
 		right: 10px;
 		text-align: center;
 		line-height: 50px;
-		
+
 		a {
 			font-size: 70px;
 			color: #FFFFFF;
@@ -50,7 +101,7 @@ iframe {
 		text-align: right;
 		line-height: 60px;
 		padding: 0 20px;
-		
+
 		a {
 			font-size: 24px;
 			color: #FFFFFF;
@@ -128,13 +179,13 @@ iframe {
 			margin-top: -40px;
 			text-align: center;
 			box-shadow: 0 0 20px transparentize( #000000, 0.6 );
-			@include simple-gradient( -45deg, $color-one, $color-two );			
-			
+			@include simple-gradient( -45deg, $color-one, $color-two );
+
 			.fa {
 				color: #FFFFFF;
 				font-size: 34px;
 				line-height: 80px;
-				
+
 				&.fa-play {
 					padding-left: 4px;
 				}
@@ -173,7 +224,7 @@ iframe {
 		@media (max-width: 400px){
 			height: 150px;
 		}
-	
+
 		.background {
 			@include transition( 0.8s, all, ease-in-out );
 			@include backface-visibility-fix();
@@ -191,7 +242,7 @@ iframe {
 
 			-webkit-animation: background-rotate 12s infinite linear;
 			animation: background-rotate 12s infinite linear;
-			
+
 			@media (max-width: 800px){
 				-webkit-animation: background-rotate 20s infinite linear;
 				animation: background-rotate 20s infinite linear;
@@ -208,7 +259,7 @@ iframe {
 
 			@media (max-width: 400px){
 				margin-left: -500px;
-			}			
+			}
 		}
 
 		.content-wrapper {
@@ -228,7 +279,7 @@ iframe {
 				@media (max-width: 800px){
 					padding: 20px;
 				}
-				
+
 				@media (max-width: 740px) and (orientation: landscape){
 					padding: 5px 20px;
 				}
@@ -253,7 +304,7 @@ iframe {
 					padding: 0 20px;
 				}
 			}
-			
+
 			h1 {
 				/* OUT ANIMATION */
 				@include transition( 0.2s, all, ease-in-out );
@@ -291,7 +342,7 @@ iframe {
 					line-height: 35px;
 					padding-bottom: 20px;
 				}
-				
+
 				&:after {
 					@include transition( 0.5s, all, ease-in-out );
 					@include transition-delay( 1.5s );
@@ -311,7 +362,7 @@ iframe {
 					@media (max-width: 740px) and (orientation: landscape){
 						display: none;
 					}
-				}	
+				}
 			}
 
 			h2 {
@@ -380,7 +431,7 @@ iframe {
 						@include transition( 1s, all, ease-in-out );
 						@include transform-3d( 1000px, '0, 0, 0' );
 						@include transition-delay( 0.5s );
-						
+
 						&:after {
 							width: 100px;
 						}

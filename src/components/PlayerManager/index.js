@@ -1,10 +1,11 @@
 'use strict';
 import React, { Component } from 'react';// eslint-disable-line no-unused-vars
-import Player from './Player';// eslint-disable-line no-unused-vars
+import Player, { IphonePlayer } from './Player';// eslint-disable-line no-unused-vars
 import CGBand from './CGBand';// eslint-disable-line no-unused-vars
-import PlayerControls from './PlayerControls';// eslint-disable-line no-unused-vars
+import PlayerControls, { IphoneControls } from './PlayerControls';// eslint-disable-line no-unused-vars
 import { Config, Video } from 'youtube-client-wrapper';// eslint-disable-line no-unused-vars
 import { YT_API_CLIENT } from 'appConfig';
+import { IS_IPHONE } from './../../constants/app';
 
 let bootYoutubeClient = () => {
     return Config.set({
@@ -29,6 +30,7 @@ class PlayerManager extends Component {
         this._onCPRewindHandler = this._onCPRewindHandler.bind(this);
         this._onCPSkipHandler = this._onCPSkipHandler.bind(this);
         this._onCPCloseHandler = this._onCPCloseHandler.bind(this);
+        this._onIphoneCPSkipHandler = this._onIphoneCPSkipHandler.bind(this);
         /* boot first, then start to process*/
         bootYoutubeClient()
             .then(() => {
@@ -39,7 +41,7 @@ class PlayerManager extends Component {
         this._player = null;
         this._lazyList = [];
         this._isLazy = false;
-        this._currentVideoOnPlayer = null;
+        this._currentVideoIndex = null;
         this._onScreenTimeoutIds = [];
         /* custom youtube player controls*/
         this._playerControls = null;
@@ -96,7 +98,7 @@ class PlayerManager extends Component {
 
     _collectVideosId() {
         if (!externalList.length) {
-            // inject playlist into player
+            // inject playlist into player for lazy loading
             this._lazyLoad(Array.from(videos.keys()));
         } else {
             let videoTitle = externalList.shift();
@@ -110,8 +112,9 @@ class PlayerManager extends Component {
                     }*/
                     videos.set(element.id, element);
                 }
+
                 if (videos.size === 1) {
-                    // start with first collected video
+                    // start with first collected video. Others are lazy loaded.
                     let firstId = Array.from(videos.keys())[0];
                     this.setState({
                         loading: false,
@@ -119,7 +122,10 @@ class PlayerManager extends Component {
                         showCGBand: false,
                         currentVideoTitle: videos.get(firstId).title
                     });
+                    this._currentVideoIndex = 0;
                 }
+                // updates every loop for UI actions before full list loaded
+                this._lazyLoad(Array.from(videos.keys()));
                 this._collectVideosId();
             });
         }
@@ -132,6 +138,29 @@ class PlayerManager extends Component {
     }
 
     _getYoutubeVideo() {
+        let onScreenComp = IS_IPHONE
+            ? this._getIphonePlayerConponents()
+            : this._getPlayerComponents();
+        return onScreenComp;
+    }
+
+    _getIphonePlayerConponents() {
+        return (
+            <div>
+                <Player className="playerContainer"
+                    list={this.state.playlist}
+                    onReady={this._onReadyHandler}
+                    onEnd={this._onEndHandler}
+                />
+                <IphoneControls
+                    onSkip={this._onIphoneCPSkipHandler}
+                    onClose={this._onCPCloseHandler}
+                />
+            </div>
+        );
+    }
+
+    _getPlayerComponents() {
         return (
             <div>
                 <Player className="playerContainer"
@@ -152,7 +181,6 @@ class PlayerManager extends Component {
                     onClose={this._onCPCloseHandler}
                 />
             </div>
-
         );
     }
 
@@ -163,11 +191,48 @@ class PlayerManager extends Component {
 
     _onReadyHandler(evt) {
         this._player = evt.target;
-        // onStateChange prop on Player doesn't work.
-        this._player.addEventListener('onStateChange', this._onStateChangeHandler.bind(this));
+        if (!IS_IPHONE) {
+            // onStateChange prop on Player doesn't work.
+            this._player.addEventListener('onStateChange', this._onStateChangeHandler.bind(this));
+        }
     }
 
     _onEndHandler() {
+        if (IS_IPHONE) {
+            this._iPhoneOnEndHandler();
+        } else {
+            this._regularOnEndHandler();
+        }
+    }
+
+    _onIphoneCPSkipHandler() {
+        this._iPhoneNextVideo();
+    }
+
+    _iPhoneOnEndHandler() {
+        this._iPhoneNextVideo();
+    }
+
+    _iPhoneNextVideo() {
+        // has next?
+        if (this._currentVideoIndex + 1 === this._lazyList.length) {
+            // first
+            this._currentVideoIndex = 0;
+        } else {
+            // next
+            this._currentVideoIndex++;
+        }
+
+        // update state
+        this.setState({
+            loading: false,
+            playlist: [this._lazyList[this._currentVideoIndex]],
+            showCGBand: false,
+            currentVideoTitle: ''
+        });
+    }
+
+    _regularOnEndHandler() {
         if (this._isLazy) {
             this._isLazy = false;
             this._player.loadPlaylist(this._lazyList, 1);

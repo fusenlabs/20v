@@ -8,18 +8,20 @@ import Share from './components/Share';// eslint-disable-line no-unused-vars
 import { connect } from 'react-redux';
 import * as playerActions from './actions/player';
 import * as appActions from './actions/app';
-import { VIEWS } from './constants/app';
+import { VIEWS, IS_IPHONE } from './constants/app';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this._handleStopPlaying = this._handleStopPlaying.bind(this);
         this._getFormattedList = this._getFormattedList.bind(this);
+        this._isIPhone = IS_IPHONE;
     }
 
     render() {
+        let iPhoneClass = this._isIPhone ? 'iphone' : '';
         return (
-            <div className="app-inner-wrapper">
+            <div className={`app-inner-wrapper ${iPhoneClass}`}>
                 <ReactCSSTransitionGroup
                     transitionName="screen-fade"
                     transitionAppear
@@ -37,10 +39,10 @@ class App extends Component {
 
     _getHomeLayout() {
         return (
-            <div className='home-wrapper' key={this.props.view}>
+            <div className="home-wrapper" key={this.props.view}>
                 <Footer/>
                 <Share/>
-                <div className='home-body'>
+                <div className="home-body">
                     <img src="/images/logo.svg" className="intro-logo"/>
                     <p className="intro-text">
                         Create and enjoy a custom music channel based on a single song
