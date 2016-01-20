@@ -151,7 +151,7 @@ class IphoneControls extends Component {
                 </div>
 
                 <div className="iphone-disclaimer">
-                	For a better experience, use 20v.co in a wide-screen device
+                    For a better experience, use 20v.co in a wide-screen device
                 </div>
             </div>
         );
