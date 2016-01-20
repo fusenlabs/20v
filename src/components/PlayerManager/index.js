@@ -43,7 +43,6 @@ class PlayerManager extends Component {
         this._isLazy = false;
         this._currentVideoIndex = null;
         this._onScreenTimeoutIds = [];
-        this._isIPhone = IS_IPHONE;
         /* custom youtube player controls*/
         this._playerControls = null;
 
@@ -139,7 +138,7 @@ class PlayerManager extends Component {
     }
 
     _getYoutubeVideo() {
-        let onScreenComp = this._isIPhone
+        let onScreenComp = IS_IPHONE
             ? this._getIphonePlayerConponents()
             : this._getPlayerComponents();
         return onScreenComp;
