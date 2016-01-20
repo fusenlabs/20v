@@ -125,7 +125,8 @@ class PlayerManager extends Component {
                     });
                     this._currentVideoIndex = 0;
                 }
-
+                // updates every loop for UI actions before full list loaded
+                this._lazyLoad(Array.from(videos.keys()));
                 this._collectVideosId();
             });
         }

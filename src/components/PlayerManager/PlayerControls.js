@@ -149,6 +149,10 @@ class IphoneControls extends Component {
                         NEXT VIDEO <i className="fa fa-step-forward"></i>
                     </a>
                 </div>
+
+                <div className="iphone-disclaimer">
+                    Enjoy a better experience on wider screen devices.
+                </div>
             </div>
         );
     }

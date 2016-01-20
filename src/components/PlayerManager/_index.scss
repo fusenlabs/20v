@@ -15,6 +15,26 @@ iframe {
 	z-index: 10;
 	left: 0;
 	top: 0;
+	background-color: #000;
+	height: 35px;
+	padding: 10px;
+	.video-close {
+		float: left;
+		font-size: 30px;
+	}
+	.video-next {
+		float: right;
+	}
+	.iphone-disclaimer {
+		width: 100%;
+		position: absolute;
+		top: 35px;
+		left: 0;
+		text-align: center;
+		background-color: #f0ad4e;
+		color: #333;
+		padding: 3px;
+	}
 }
 
 .PlayerControls {
