@@ -202,6 +202,67 @@ body {
 	}
 }
 
+// ERROR MESSAGE
+a.AppFail:hover,
+a.AppFail:visited,
+a.AppFail:link {
+	color: #000;
+}
+
+.AppFail {
+	@include border-radius();
+	width: 300px;
+	height: 300px;
+	background-color: $color-two;
+	background-image: url('/../images/20v_error.gif');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 200px 200px;
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -150px;
+	margin-left: -150px;
+	z-index: 4;
+	text-decoration: none;
+
+	.copy {
+		width: 100%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: 180px;
+		margin-left: -50%;
+		height: 60px;
+		text-align: center;
+		color: #414141;
+
+		.line1 {
+			font-size: 20px;
+			display: block;
+			line-height: 20px;
+		}
+
+		.line2 {
+			font-size: 15px;
+			line-height: 20px;
+		}
+	}
+
+	@media (max-width: 400px){
+		width: 200px;
+		height: 200px;
+		background-size: 160px 160px;
+		margin-top: -100px;
+		margin-left: -100px;
+
+		.copy {
+			margin-top: 130px;
+		}
+	}
+}
+
 
 // VIDEO PLAYER
 .playerContainer {

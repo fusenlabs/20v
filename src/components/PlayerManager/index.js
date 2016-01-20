@@ -79,6 +79,7 @@ class PlayerManager extends Component {
 
         this.state = {
             loading: true,
+            error: false,
             playlist: videos.keys(),
             showCGBand: false,
             currentVideoTitle: ''
@@ -92,52 +93,81 @@ class PlayerManager extends Component {
     }
 
     render() {
-        let content = this.state.loading ? this._getLoadingComponent() : this._getYoutubeVideo();
+        let content = null;
+        content = this.state.loading ? this._getLoadingRender() : content;
+        content = this.state.error ? this._getErrorRender() : content;
+        content = !this.state.loading && !this.state.error ? this._getYoutubeVideoRender() : content;
         return (content);
     }
 
     _collectVideosId() {
-        if (!externalList.length) {
+        let hasTitlesToSearch = !!externalList.length;
+        let nextAction = hasTitlesToSearch ? this._searchMoreTitles.bind(this) : this._allTitlesSearched.bind(this);
+        nextAction();
+    }
+
+    _allTitlesSearched() {
+        let hasFoundVideos = videos.size > 0;
+        if (hasFoundVideos) {
             // inject playlist into player for lazy loading
             this._lazyLoad(Array.from(videos.keys()));
         } else {
-            let videoTitle = externalList.shift();
-            let config = { order: 'viewCount' };
-            Video.where(videoTitle, config)
-            .then(page => {
-                if (page.elements.length) {
-                    let element = page.firstElement();
-                    /* for (let song of page.elements) {
-                        // improve selection intelligence here
-                    }*/
-                    videos.set(element.id, element);
-                }
-
-                if (videos.size === 1) {
-                    // start with first collected video. Others are lazy loaded.
-                    let firstId = Array.from(videos.keys())[0];
-                    this.setState({
-                        loading: false,
-                        playlist: [firstId],
-                        showCGBand: false,
-                        currentVideoTitle: videos.get(firstId).title
-                    });
-                    this._currentVideoIndex = 0;
-                }
-                // updates every loop for UI actions before full list loaded
-                this._lazyLoad(Array.from(videos.keys()));
-                this._collectVideosId();
-            });
+            this._failedFindingVideos();
         }
     }
 
-    _getLoadingComponent() {
+    _searchMoreTitles() {
+        let videoTitle = externalList.shift();
+        let config = { order: 'viewCount' };
+        Video.where(videoTitle, config)
+        .then(page=> {
+
+            let hasFoundVideos = page.elements.length;
+            if (hasFoundVideos) {
+                let element = page.firstElement();
+                // improve selection intelligence here iterating page.elements
+                videos.set(element.id, element);
+            }
+
+            let isFirstVideo = videos.size === 1;
+            if (isFirstVideo) {
+                // start with first collected video. Others are lazy loaded.
+                let firstId = Array.from(videos.keys())[0];
+                this.setState({
+                    loading: false,
+                    error: false,
+                    playlist: [firstId],
+                    showCGBand: false,
+                    currentVideoTitle: videos.get(firstId).title
+                });
+                // needed to handle NEXT event on iPhone
+                this._currentVideoIndex = 0;
+            }
+            // updates every loop for UI actions before full list loaded
+            // in case user click NEXT before all titles are searched.
+            this._lazyLoad(Array.from(videos.keys()));
+            this._collectVideosId();
+        });
+    }
+
+    _getLoadingRender() {
         return (
             <div className="AppLoading"></div>
         );
     }
 
-    _getYoutubeVideo() {
+    _getErrorRender() {
+        return (
+            <a className="AppFail" href="#" onClick={this.close}>
+                <div className="copy">
+                    <span className="line1">Sorry, we've run out of videos for your search.</span>
+                    <span className="line2">Try again with more devotion</span>
+                </div>
+            </a>
+        );
+    }
+
+    _getYoutubeVideoRender() {
         let onScreenComp = IS_IPHONE
             ? this._getIphonePlayerConponents()
             : this._getPlayerComponents();
@@ -223,12 +253,14 @@ class PlayerManager extends Component {
             this._currentVideoIndex++;
         }
 
+        let videoId = this._lazyList[this._currentVideoIndex];
         // update state
         this.setState({
             loading: false,
-            playlist: [this._lazyList[this._currentVideoIndex]],
+            error: false,
+            playlist: [videoId],
             showCGBand: false,
-            currentVideoTitle: ''
+            currentVideoTitle: videos.get(videoId).title
         });
     }
 
@@ -339,6 +371,13 @@ class PlayerManager extends Component {
         this._isLazy = true;
     }
 
+    _failedFindingVideos() {
+        this.setState(Object.assign(
+            this.state,
+            { error: true, loading: false }
+        ));
+    }
+
     close() {
         this.props.onClose();
     }
@@ -346,7 +385,7 @@ class PlayerManager extends Component {
 }
 
 PlayerManager.defaultProps = {
-    onClose: () => {}
+    onClose: ()=> {}
 };
 
 export default PlayerManager;
