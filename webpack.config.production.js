@@ -38,8 +38,7 @@ module.exports = {
         'Map': 'core-js/fn/map',
         'Symbol': 'core-js/fn/symbol',
         'Promise': 'core-js/fn/promise',
-        'Object.assign': 'core-js/fn/object/assign',
-        'Array.from': 'core-js/fn/array/from'
+        'Object.assign': 'core-js/fn/object/assign'
     })
   ],
   module: {
