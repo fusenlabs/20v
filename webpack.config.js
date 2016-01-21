@@ -27,12 +27,6 @@ module.exports = {
         new webpack.NoErrorsPlugin(),
         new ExtractTextPlugin('style.css', {
             allChunks: true
-        }),
-        new webpack.ProvidePlugin({
-            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch',
-            'Map': 'core-js/fn/map',
-            'Symbol': 'core-js/fn/symbol',
-            'Promise': 'core-js/fn/promise'
         })
     ],
     module: {
