@@ -13,12 +13,13 @@ var copyFilesCommands = [
     'cp -R ./public/* ./page/',
     'rm -rf ./page/static',
     'cp -r ./dist/ ./page/static/',
+    'rm page/.git/index.lock'
 ].join(' && ');
 
 var gitCommands = [
     'cd ./page',
     'git add -A',
-    'git commit -a -m \'gh-pages update\'',
+    'git commit -a -m "gh-pages update"',
     'git push origin gh-pages --force'
 ].join(' && ');
 
