@@ -4,4 +4,4 @@ export const VIEWS = {
     RESULTS: 'results',
     PLAYER: 'player'
 };
-export const IS_IPHONE = navigator.userAgent.indexOf('iPhone') >= 0;
+export const IS_IPHONE = navigator.userAgent.match(/iPhone|iPad|iPod/i);
