@@ -29,7 +29,10 @@ module.exports = {
             allChunks: true
         }),
         new webpack.ProvidePlugin({
-            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch',
+            'Map': 'core-js/fn/map',
+            'Symbol': 'core-js/fn/symbol',
+            'Promise': 'core-js/fn/promise'
         })
     ],
     module: {
