@@ -41,12 +41,23 @@ class Search extends Component {
         };
         onSuggestionSelected = onSuggestionSelected.bind(this);
 
+        let handleKeyPress = (event) => {
+            if (event.key === 'Enter') {
+                const text = event.target.value;
+                if (text.length > 3) {
+                    this.props.fetchSearch(text);
+                    ga('send', 'event', 'key', 'press', 'search-box-enter');
+                }
+            }
+        };
+
         const inputAttributes = {
             id: 'search-input',
             type: 'text',
             ref: 'searchInput',
             className: 'input-search',
-            placeholder: 'Type a song name and select an option'
+            placeholder: 'Type a song name and select an option',
+            onKeyPress: handleKeyPress.bind(this)
         };
         return (
             <div className={'search-wrapper' + (this.props.isSearching ? 'search-mask' : '') }>
