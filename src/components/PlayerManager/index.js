@@ -87,6 +87,10 @@ class PlayerManager extends Component {
         };
     }
 
+    componentDidMount() {
+        this._attachCloseWarning();
+    }
+
     componentWillUnmount() {
         for (let TId of this._onScreenTimeoutIds) {
             clearTimeout(TId);
@@ -379,9 +383,29 @@ class PlayerManager extends Component {
         ));
     }
 
+    _attachCloseWarning() {
+        window.onbeforeunload = (event)=> {
+            const message = 'Sure you want to close?';
+            if (typeof event === 'undefined') {
+                event = window.event;
+            }
+
+            if (event) {
+                event.returnValue = message;
+            }
+            return message;
+        };
+    }
+
+    _removeCloseWarning() {
+        window.onbeforeunload = ()=> null;
+    }
+
     close() {
+        this._removeCloseWarning();
         this.props.onClose();
     }
+
 
 }
 
