@@ -51,16 +51,17 @@ class Search extends Component {
             }
         };
 
-        const inputAttributes = {
+        const disabled = this.props.isSearching ? { disabled: 'disabled' } : {};
+        const inputAttributes = Object.assign({
             id: 'search-input',
             type: 'text',
             ref: 'searchInput',
             className: 'input-search',
             placeholder: 'Type a song name and select an option',
             onKeyPress: handleKeyPress.bind(this)
-        };
+        }, disabled);
         return (
-            <div className={'search-wrapper' + (this.props.isSearching ? 'search-mask' : '') }>
+            <div className={'search-wrapper ' + (this.props.isSearching ? 'search-mask' : '') }>
                 <Autosuggest
                     suggestions={getSuggestions}
                     onSuggestionSelected={onSuggestionSelected}

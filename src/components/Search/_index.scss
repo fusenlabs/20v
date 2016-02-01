@@ -6,6 +6,10 @@
 	margin: 0 auto;
 	margin-top: 30px;
 
+    &.search-mask {
+        opacity: 0.5;
+    }
+
 	input {
 		@include border-radius( 50px );
 		width: 100%;
@@ -79,11 +83,11 @@
 		z-index: 2;
 		background-color: #FFFFFF;
 		overflow: hidden;
-		
+
 		@media (max-width: 600px){
 			width: 100%;
 			padding: 0;
-		} 
+		}
 	}
 
     .react-autosuggest__suggestion {
