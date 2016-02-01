@@ -31,11 +31,17 @@ export function stopSearching() {
 }
 
 export function fetchSearch(text) {
-    startSearching();
     return (dispatch) => {
-        // dispatch(setSearch(text));
+        dispatch(startSearching());
         Spotify.search(text, 'US', (tracks) => {
-            stopSearching();
+            {
+                // delayed state change prevent UI changes before user navigates to player
+                const delayedDispatch = ()=> {
+                    dispatch(stopSearching());
+                };
+                setTimeout(delayedDispatch, 3000);
+            }
+
             dispatch(returnSearch(tracks));
             dispatch(appActions.navigateToPlayer());
         });
