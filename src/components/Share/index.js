@@ -35,7 +35,7 @@ class Share extends Component {
     }
 
     _shareTW() {
-        let url = `https://twitter.com/intent/tweet?text=text&url=http://www.20v.co&hashtags=music`;
+        let url = `https://twitter.com/intent/tweet?text=Check out this new app to create video playlists with just one click. Discover 20v, music for your eyes here!&url=http://www.20v.co`;
         this._share(url);
     }
 
