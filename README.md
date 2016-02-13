@@ -14,11 +14,12 @@ Go to [20v](http://magicplaylist.co/)
 - Redux
 - React
 - [Spotify-SDK](https://github.com/loverajoel/spotify-sdk)
-- Youtube API
+- [react-youtube](https://github.com/troybetz/react-youtube)
+- Youtube API v3
 
-#Spotify API
+#APIs
 
-This entire app is based on [Spotify API](https://developer.spotify.com/web-api/):heart:
+This entire app is based on [Spotify API](https://developer.spotify.com/web-api/):heart: and [YouTube API v3](https://developers.google.com/youtube/v3/)
 
 #Stay In Touch
 
