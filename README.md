@@ -1,36 +1,49 @@
-# 20v
-An app to enjoy a music channel with your favorite videos
+#20v /
 
-## Devel
-Site structure based on components
+> Create and enjoy a custom music channel based on a single song
 
-Home: 
-````
-<Body>
-  <Search></Search>
-</Body>
-<Footer></Footer>
-````
-Results: 
-````
-<Header>
-  <Search></Search>
-</Header>
-<ResultHeader></ResultHeader>
-<ResultList></ResultList>
-<Footer></Footer>
-````
-Player:
-````
-<PlayerManager>
-  <YouTubePlayer></YouTubePlayer>
-  <CGBand></CGBand>
-  <PlayerControls></PlayerControls>
-</PlayerManager>
-````
-````
-git clone https://github.com/hAPPckathon/20v.git
+[![title](https://cloud.githubusercontent.com/assets/1700100/13030218/440b0534-d281-11e5-8f4b-6d5b7b1bbd05.png)](http://20v.co/)
+
+Go to [20v](http://magicplaylist.co/)
+
+#Features
+- Create an Awesome video playlist based on a song
+
+#Stack
+- ES6
+- Redux
+- React
+- [Spotify-SDK](https://github.com/loverajoel/spotify-sdk)
+- [react-youtube](https://github.com/troybetz/react-youtube)
+- Youtube API v3
+
+#APIs
+
+This entire app is based on [Spotify API](https://developer.spotify.com/web-api/):heart: and [YouTube API v3](https://developers.google.com/youtube/v3/)
+
+#Stay In Touch
+
+Follow us for news [@20v](https://twitter.com/_20v_)
+
+
+#Contributing
+
+
+```
 npm install
-npm start
-````
-browse http://localhost:3000
+npm run dev
+
+```
+
+# Authors
+
+Marcos Herrera ([@cosmitar](https://twitter.com/cosmitar))
+
+Lucas Di Mattia ([@untallucas](https://twitter.com/untallucas))
+
+Romi Viola ([@romikid](https://twitter.com/romikid))
+
+Lovera Joel ([@loverajoel](https://twitter.com/loverajoel))
+
+
+Made with :heart: from Córdoba, Argentina.

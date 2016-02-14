@@ -8,12 +8,8 @@ let Footer = () => (
                 Fūsenlabs
             </a>
             &nbsp; / &nbsp;
-            <a href="https://twitter.com/20v" target="_blank">
+            <a href="https://twitter.com/_20v_" target="_blank">
                 @twitter
-            </a>
-            &nbsp; / &nbsp;
-            <a href="https://facebook.com/20v" target="_blank">
-                facebook
             </a>
             &nbsp; / &nbsp;
             <a href="https://github.com/fusenlabs/20v"
